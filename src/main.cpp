@@ -5,10 +5,10 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-** Last update Mon Mar 23 18:37:09 2015 Julie Terranova
+// Last update Tue Mar 24 17:00:41 2015 Julie Terranova
 */
 
-#include "nibbler.h"
+#include "nibbler.hh"
 
 int	main()
 {
