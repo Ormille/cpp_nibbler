@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Tue Mar 24 17:45:59 2015 Julie Terranova
+## Last update Tue Mar 24 17:50:10 2015 Julie Terranova
 ##
 
 NAME_EXE =	nibbler
@@ -28,6 +28,8 @@ CXX  =		g++
 CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include
 
 LDFLAGS =	-ldl
+
+make:	all
 
 $(NAME_EXE):$(OBJ_EXE)
 	$(CXX) -o $(NAME_EXE) $(OBJ_EXE) $(LDFLAGS)
