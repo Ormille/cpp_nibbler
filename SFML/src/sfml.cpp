@@ -5,12 +5,33 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Tue Mar 24 17:01:40 2015 Julie Terranova
+// Last update Wed Mar 25 11:51:25 2015 Julie Terranova
 //
 
 #include "sfml.hh"
 
-void	sfml()
+SFML::SFML()
+{}
+
+SFML::~SFML()
+{}
+
+void	SFML::initLib()
+{
+
+}
+
+int	SFML::getEvent()
+{
+
+}
+
+void	SFML::refreshImg()
+{
+
+}
+
+void	SFML::aff()
 {
 
 }

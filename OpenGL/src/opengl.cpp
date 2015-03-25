@@ -5,12 +5,33 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:04:19 2015 Julie Terranova
-// Last update Tue Mar 24 17:04:37 2015 Julie Terranova
+// Last update Wed Mar 25 11:51:36 2015 Julie Terranova
 //
 
 #include "opengl.hh"
 
-void	opengl()
+OpenGL::OpenGL()
+{}
+
+OpenGL::~OpenGL()
+{}
+
+void    OpenGL::initLib()
+{
+
+}
+
+int    OpenGL::getEvent()
+{
+
+}
+
+void    OpenGL::refreshImg()
+{
+
+}
+
+void    OpenGL::aff()
 {
 
 }
