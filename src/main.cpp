@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Thu Mar 26 11:25:23 2015 moran-_d
+// Last update Thu Mar 26 11:31:56 2015 moran-_d
 */
 
 #include <iostream>
@@ -43,5 +43,6 @@ int	main(int argc, char **argv)
       test->refreshImg();
       test->aff();
     }
+  dll.CloseDL();
   return (0);
 }
