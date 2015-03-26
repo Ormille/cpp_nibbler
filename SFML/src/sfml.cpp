@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Wed Mar 25 11:51:25 2015 Julie Terranova
+// Last update Thu Mar 26 10:48:45 2015 moran-_d
 //
 
 #include "sfml.hh"
@@ -23,7 +23,7 @@ void	SFML::initLib()
 
 int	SFML::getEvent()
 {
-
+  return (0);
 }
 
 void	SFML::refreshImg()
@@ -34,4 +34,10 @@ void	SFML::refreshImg()
 void	SFML::aff()
 {
 
+}
+
+extern "C"
+IObjGraph *nibbler_entry_point()
+{
+  return (new SFML());
 }

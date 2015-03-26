@@ -5,11 +5,12 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Tue Mar 24 17:50:10 2015 Julie Terranova
+## Last update Thu Mar 26 10:44:33 2015 moran-_d
 ##
 
 NAME_EXE =	nibbler
-SRC_EXE =	src/main.cpp
+SRC_EXE =	src/main.cpp \
+		src/DLLoader.cpp
 OBJ_EXE =	$(SRC_EXE:.cpp=.o)
 
 NAME_LIB1 =	lib_nibbler_sfml.so

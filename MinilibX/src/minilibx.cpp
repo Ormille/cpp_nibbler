@@ -5,12 +5,44 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 16:58:47 2015 Julie Terranova
-// Last update Tue Mar 24 17:46:26 2015 Julie Terranova
+// Last update Thu Mar 26 10:51:15 2015 moran-_d
 //
 
+#include <stdio.h>
 #include "minilibx.hh"
 
-void	minilibx()
+Minilibx::Minilibx()
 {
 
+}
+
+Minilibx::~Minilibx()
+{
+
+}
+
+void    Minilibx::initLib()
+{
+
+}
+
+int     Minilibx::getEvent()
+{
+  return (0);
+}
+
+void    Minilibx::refreshImg()
+{
+
+}
+
+void    Minilibx::aff()
+{
+
+}
+
+extern "C"
+IObjGraph *nibbler_entry_point()
+{
+  return (new Minilibx());
 }

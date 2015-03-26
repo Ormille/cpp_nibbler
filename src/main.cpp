@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Wed Mar 25 12:07:44 2015 Julie Terranova
+// Last update Thu Mar 26 09:39:30 2015 moran-_d
 */
 
 #include "nibbler.hh"
@@ -13,6 +13,7 @@
 
 int	main()
 {
+  /*
   IObjGraph *test;
 
   test = new IObjGraph();
@@ -22,5 +23,6 @@ int	main()
       test->refreshImg();
       test->aff();
     }
+  */
   return (0);
 }

@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:05:08 2015 Julie Terranova
-// Last update Wed Mar 25 11:51:47 2015 Julie Terranova
+// Last update Thu Mar 26 10:49:00 2015 moran-_d
 //
 
 #ifndef OPENGL_HH__
@@ -15,9 +15,11 @@
 
 class OpenGL : public IObjGraph
 {
+public:
   OpenGL();
   ~OpenGL();
 
+private:
   void initLib();
   int getEvent();
   void refreshImg();
