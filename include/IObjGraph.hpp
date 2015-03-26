@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Wed Mar 25 11:30:41 2015 Julie Terranova
-// Last update Wed Mar 25 11:50:50 2015 Julie Terranova
+// Last update Thu Mar 26 11:24:00 2015 moran-_d
 //
 
 #ifndef IOBJGRAPH_HH__
@@ -16,7 +16,7 @@
 class IObjGraph
 {
 public:
-  virtual ~IObjGraph();
+  virtual ~IObjGraph() {};
 
   virtual void initLib() = 0;
   virtual int getEvent() = 0;

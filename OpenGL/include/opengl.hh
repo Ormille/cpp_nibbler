@@ -5,13 +5,13 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:05:08 2015 Julie Terranova
-// Last update Thu Mar 26 10:49:00 2015 moran-_d
+// Last update Thu Mar 26 11:25:01 2015 moran-_d
 //
 
 #ifndef OPENGL_HH__
 # define OPENGL_HH__
 
-#include "IObjGraph.hh"
+#include "IObjGraph.hpp"
 
 class OpenGL : public IObjGraph
 {

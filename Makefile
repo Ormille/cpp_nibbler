@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Thu Mar 26 10:44:33 2015 moran-_d
+## Last update Thu Mar 26 11:25:16 2015 moran-_d
 ##
 
 NAME_EXE =	nibbler
@@ -28,7 +28,7 @@ OBJ_LIB3 =	$(SRC_LIB3:.cpp=.o)
 CXX  =		g++
 CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include
 
-LDFLAGS =	-ldl
+LDFLAGS =	-ldl -rdynamic
 
 make:	all
 

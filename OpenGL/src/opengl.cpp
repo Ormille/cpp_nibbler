@@ -5,9 +5,10 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:04:19 2015 Julie Terranova
-// Last update Thu Mar 26 10:49:12 2015 moran-_d
+// Last update Thu Mar 26 11:11:30 2015 moran-_d
 //
 
+#include <iostream>
 #include <stdio.h>
 #include "opengl.hh"
 
@@ -40,5 +41,6 @@ void    OpenGL::aff()
 extern "C"
 IObjGraph *nibbler_entry_point()
 {
+  std::cout << "OpenGL loaded." << std::endl;
   return (new OpenGL());
 }

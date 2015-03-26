@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 10:21:22 2015 moran-_d
-// Last update Thu Mar 26 10:45:26 2015 moran-_d
+// Last update Thu Mar 26 11:15:59 2015 moran-_d
 //
 
 #include <iostream>
@@ -21,11 +21,11 @@ DLLoader::~DLLoader()
     this->CloseDL();
 }
 
-int DLLoader::LoadDL(const std::string &st)
+int DLLoader::LoadDL(const char *st)
 {
   void *handler;
 
-  if ((handler = dlopen(st.c_str(), RTLD_LAZY | RTLD_LOCAL)) == NULL)
+  if ((handler = dlopen(st, RTLD_NOW | RTLD_GLOBAL)) == NULL)
     {
       std::cout << "DLLoader: couldn't open from " << st << std::endl
 		<< dlerror() << std::endl;

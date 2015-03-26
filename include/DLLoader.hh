@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 10:04:04 2015 moran-_d
-// Last update Thu Mar 26 10:44:45 2015 moran-_d
+// Last update Thu Mar 26 11:24:45 2015 moran-_d
 //
 
 #ifndef DLLOADER_H_
@@ -13,7 +13,7 @@
 
 #include <string>
 #include <dlfcn.h>
-#include "IObjGraph.hh"
+#include "IObjGraph.hpp"
 
 #define ENTRY_POINT_ST	"nibbler_entry_point"
 
@@ -25,7 +25,7 @@ public:
   DLLoader();
   ~DLLoader();
 
-  int LoadDL(const std::string &);
+  int LoadDL(const char *);
   void *ExtractFunction(const char *);
   int CloseDL();
 

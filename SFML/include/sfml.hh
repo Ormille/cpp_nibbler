@@ -5,13 +5,13 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:57 2015 Julie Terranova
-// Last update Thu Mar 26 09:52:51 2015 moran-_d
+// Last update Thu Mar 26 11:24:39 2015 moran-_d
 //
 
 #ifndef SFML_HH__
 # define SFML_HH__
 
-#include "IObjGraph.hh"
+#include "IObjGraph.hpp"
 
 class SFML : public IObjGraph
 {
