@@ -5,12 +5,14 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Thu Mar 26 11:25:16 2015 moran-_d
+## Last update Mon Mar 30 17:48:10 2015 moran-_d
 ##
 
 NAME_EXE =	nibbler
 SRC_EXE =	src/main.cpp \
-		src/DLLoader.cpp
+		src/DLLoader.cpp \
+		src/nibbler.cpp \
+		src/Map.cpp
 OBJ_EXE =	$(SRC_EXE:.cpp=.o)
 
 NAME_LIB1 =	lib_nibbler_sfml.so
@@ -26,7 +28,7 @@ SRC_LIB3 =	MinilibX/src/minilibx.cpp
 OBJ_LIB3 =	$(SRC_LIB3:.cpp=.o)
 
 CXX  =		g++
-CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include
+CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include -g
 
 LDFLAGS =	-ldl -rdynamic
 

@@ -5,9 +5,11 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Thu Mar 26 11:31:56 2015 moran-_d
+// Last update Mon Mar 30 17:46:48 2015 moran-_d
 */
 
+#include <sstream>
+#include <stdlib.h>
 #include <iostream>
 #include "nibbler.hh"
 #include "IObjGraph.hpp"
@@ -25,24 +27,38 @@ IObjGraph *load_lib(char *st, DLLoader &dll)
   return (ret);
 }
 
+Nibbler *load_game(char *xc, char *yc, IObjGraph *lib)
+{
+  Nibbler *ret;
+  std::stringstream tmp;
+  unsigned int x;
+  unsigned int y;
+
+  tmp << xc;
+  tmp >> x;
+  tmp.str("");
+  tmp << yc;
+  tmp >> y;
+  ret = new Nibbler(x, y, lib);
+  return (ret);
+}
+
 int	main(int argc, char **argv)
 {
-  IObjGraph *test;
+  IObjGraph *lib;
   DLLoader dll;
+  Nibbler *game;
 
   if (argc < 4)
     {
       std::cout << "Usage: nibbler MapX MapY GraphicLibrary" << std::endl;
       return (-1);
     }
-  if ((test = load_lib(argv[3], dll)) == NULL)
+  if ((lib = load_lib(argv[3], dll)) == NULL)
     return (-1);
-  test->initLib();
-  while (test->getEvent())
-    {
-      test->refreshImg();
-      test->aff();
-    }
+  lib->initLib();
+  game = load_game(argv[1], argv[2], lib);
+  game->process();
   dll.CloseDL();
   return (0);
 }
