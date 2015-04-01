@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Wed Mar 25 11:30:41 2015 Julie Terranova
-// Last update Thu Mar 26 11:24:00 2015 moran-_d
+// Last update Wed Apr  1 14:54:10 2015 moran-_d
 //
 
 #ifndef IOBJGRAPH_HH__
@@ -18,10 +18,11 @@ class IObjGraph
 public:
   virtual ~IObjGraph() {};
 
-  virtual void initLib() = 0;
+  virtual void initLib(unsigned int, unsigned int) = 0;
   virtual int getEvent() = 0;
-  virtual void refreshImg() = 0;
-  virtual void aff() = 0;
+  virtual void refreshImg(int**) = 0;
+  virtual void affText(const std::string &) = 0;
+  virtual void closeLib() = 0;
 };
 
 #endif
