@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:57 2015 Julie Terranova
-// Last update Wed Apr  1 15:31:09 2015 Julie Terranova
+// Last update Wed Apr  1 16:32:44 2015 Julie Terranova
 //
 
 #ifndef SFML_HH__
@@ -27,7 +27,7 @@ private:
   void affText(const std::string &toAff);
   void closeLib();
 
-  sf::Window _window;
+  sf::Window *_window;
   int _x;
   int _y;
 };
