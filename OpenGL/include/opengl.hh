@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:05:08 2015 Julie Terranova
-// Last update Thu Mar 26 11:25:01 2015 moran-_d
+// Last update Wed Apr  1 18:23:31 2015 terran_j
 //
 
 #ifndef OPENGL_HH__
@@ -20,10 +20,14 @@ public:
   ~OpenGL();
 
 private:
-  void initLib();
+  void initLib(unsigned int x, unsigned int y);
   int getEvent();
-  void refreshImg();
-  void aff();
+  void refreshImg(int **map);
+  void affText(const std::string &toAff);
+  void closeLib();
+
+  int _x;
+  int _y;
 };
 
 #endif

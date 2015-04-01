@@ -5,26 +5,22 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Wed Apr  1 16:43:17 2015 Julie Terranova
+// Last update Wed Apr  1 18:31:42 2015 terran_j
 //
 
 #include <iostream>
 #include "sfml.hh"
 
 SFML::SFML()
-{
-  // set la taille des cases?
-}
+{}
 
 SFML::~SFML()
-{
-  // clear tout ce qui etait en memoire?
-}
+{}
 
 void	SFML::initLib(unsigned int x, unsigned int y)
 {
   sf::Window *n;
-  // afficher une fenetre de x sur y cases
+
   n = new sf::Window(sf::VideoMode(x, y), "Nibbler SFML",
 	     sf::Style::Titlebar | sf::Style::Resize
 	     | sf::Style::Close/* | sf::Style::Default*/);
@@ -37,7 +33,7 @@ void	SFML::initLib(unsigned int x, unsigned int y)
      0 - vide / background
      1 _ tete
      2 - corps
-     3 - bords
+     ... voir todo!
      negatif - bouffe
   */
 }
@@ -46,11 +42,11 @@ int	SFML::getEvent()
 {
   // return la premiere action de ma stack telle quelle
   sf::Event event;
-  sf::Window win(sf::VideoMode(10, 10), "Nibbler SFML");
+  // sf::Window win(sf::VideoMode(10, 10), "Nibbler SFML");
 
-  while (win.pollEvent(event))
+  while (this->_window->pollEvent(event))
     {
-      if (event)
+      if (event.key.code != 45454545)
 	return event.key.code;
     }
   return (0);
@@ -58,18 +54,18 @@ int	SFML::getEvent()
 
 void	SFML::refreshImg(int **map)
 {
-
+  map = map; // atej
 }
 
 void	SFML::affText(const std::string &toAff)
 {
-  toAff = toAff; // atej
+  std::cout << toAff << std::endl; // atej
 }
 
 void    SFML::closeLib()
 {
-  // fermer fenetre proprement et pe clean ici?
-  this->_window.close();
+  // fermer fenetre proprement et clean tout ce qui etait en memoire
+  this->_window->close();
 }
 
 extern "C"

@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:04:19 2015 Julie Terranova
-// Last update Thu Mar 26 11:11:30 2015 moran-_d
+// Last update Wed Apr  1 18:24:25 2015 terran_j
 //
 
 #include <iostream>
@@ -18,9 +18,10 @@ OpenGL::OpenGL()
 OpenGL::~OpenGL()
 {}
 
-void    OpenGL::initLib()
+void    OpenGL::initLib(unsigned int x, unsigned int y)
 {
-
+  this->_x = x;
+  this->_y = y;
 }
 
 int    OpenGL::getEvent()
@@ -28,12 +29,17 @@ int    OpenGL::getEvent()
   return (0);
 }
 
-void    OpenGL::refreshImg()
+void    OpenGL::refreshImg(int **map)
 {
-
+  map = map; // a virer
 }
 
-void    OpenGL::aff()
+void    OpenGL::affText(const std::string &toAff)
+{
+  std::cout << toAff << std::endl; // a virer
+}
+
+void	OpenGL::closeLib()
 {
 
 }

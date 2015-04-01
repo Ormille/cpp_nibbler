@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Wed Apr  1 17:07:23 2015 Julie Terranova
+## Last update Wed Apr  1 18:18:56 2015 terran_j
 ##
 
 NAME_EXE =	nibbler
@@ -39,10 +39,10 @@ $(NAME_EXE):$(OBJ_EXE)
 	$(CXX) -o $(NAME_EXE) $(OBJ_EXE) $(LDFLAGS)
 
 $(NAME_LIB1):$(OBJ_LIB1)
-	$(CXX) -shared -o $(NAME_LIB1) $(OBJ_LIB1) -sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+	$(CXX) -shared -o $(NAME_LIB1) $(OBJ_LIB1) -lsfml-graphics -lsfml-window -lsfml-system
 
 $(NAME_LIB2):$(OBJ_LIB2)
-	$(CXX) -shared -o $(NAME_LIB2) $(OBJ_LIB2)
+	$(CXX) -shared -o $(NAME_LIB2) $(OBJ_LIB2) -lGL -lGLU -lSDL
 
 $(NAME_LIB3):$(OBJ_LIB3)
 	$(CXX) -shared -o $(NAME_LIB3) $(OBJ_LIB3)

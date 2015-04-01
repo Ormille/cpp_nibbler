@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 16:58:47 2015 Julie Terranova
-// Last update Thu Mar 26 11:26:09 2015 moran-_d
+// Last update Wed Apr  1 18:28:57 2015 terran_j
 //
 
 #include <iostream>
@@ -13,18 +13,15 @@
 #include "minilibx.hh"
 
 Minilibx::Minilibx()
-{
-
-}
+{}
 
 Minilibx::~Minilibx()
+{}
+
+void    Minilibx::initLib(unsigned int x, unsigned int y)
 {
-
-}
-
-void    Minilibx::initLib()
-{
-
+  this->_x = x;
+  this->_y = y;
 }
 
 int     Minilibx::getEvent()
@@ -32,12 +29,17 @@ int     Minilibx::getEvent()
   return (0);
 }
 
-void    Minilibx::refreshImg()
+void    Minilibx::refreshImg(int **map)
 {
-
+  map = map; // a virer
 }
 
-void    Minilibx::aff()
+void    Minilibx::affText(const std::string &toAff)
+{
+  std::cout << toAff << std::endl; // a virer
+}
+
+void    Minilibx::closeLib()
 {
 
 }
