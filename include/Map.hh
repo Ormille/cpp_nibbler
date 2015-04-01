@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:43:56 2015 moran-_d
-// Last update Mon Mar 30 17:36:47 2015 moran-_d
+// Last update Wed Apr  1 15:55:48 2015 moran-_d
 //
 
 #ifndef MAP_HH_
@@ -23,6 +23,10 @@ public:
 
 public:
   int **getMap() const;
+  int setCell(unsigned int x, unsigned int y, int val);
+  int getCell(unsigned int x, unsigned int y) const;
+  int getX() const;
+  int getY() const;
 };
 
 #endif

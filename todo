@@ -30,3 +30,21 @@ espace = pause/finpause
 echap = quit
 ² = new snake
 // Les deux prochaines touches tapées seront la gauche/droite du snake
+
+
+===========
+==MAP  ID==
+===========
+
+  < 0 == Items
+-1 = fruit normal
+-100 = portail
+
+  = 0 == vide
+
+  > 0 == obstacle
+1 = tête snake
+2 = corps snake
+3 = queue snake
+
+2147483647 = mur/bordure

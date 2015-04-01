@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Mon Mar 30 17:46:48 2015 moran-_d
+// Last update Wed Apr  1 14:50:43 2015 moran-_d
 */
 
 #include <sstream>
@@ -14,6 +14,16 @@
 #include "nibbler.hh"
 #include "IObjGraph.hpp"
 #include "DLLoader.hh"
+
+unsigned int strToInt(char *st)
+{
+  std::stringstream tmp;
+  unsigned int x;
+  
+  tmp << st;
+  tmp >> x;
+  return (x);
+}
 
 IObjGraph *load_lib(char *st, DLLoader &dll)
 {
@@ -27,18 +37,10 @@ IObjGraph *load_lib(char *st, DLLoader &dll)
   return (ret);
 }
 
-Nibbler *load_game(char *xc, char *yc, IObjGraph *lib)
+Nibbler *load_game(unsigned int x, unsigned int y, IObjGraph *lib)
 {
   Nibbler *ret;
-  std::stringstream tmp;
-  unsigned int x;
-  unsigned int y;
 
-  tmp << xc;
-  tmp >> x;
-  tmp.str("");
-  tmp << yc;
-  tmp >> y;
   ret = new Nibbler(x, y, lib);
   return (ret);
 }
@@ -48,6 +50,8 @@ int	main(int argc, char **argv)
   IObjGraph *lib;
   DLLoader dll;
   Nibbler *game;
+  unsigned int x;
+  unsigned int y;
 
   if (argc < 4)
     {
@@ -56,8 +60,10 @@ int	main(int argc, char **argv)
     }
   if ((lib = load_lib(argv[3], dll)) == NULL)
     return (-1);
-  lib->initLib();
-  game = load_game(argv[1], argv[2], lib);
+  x = strToInt(argv[1]);
+  y = strToInt(argv[2]);
+  lib->initLib(x, y);
+  game = load_game(x, y, lib);
   game->process();
   dll.CloseDL();
   return (0);
