@@ -5,9 +5,10 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Wed Apr  1 14:56:25 2015 moran-_d
+// Last update Wed Apr  1 16:17:45 2015 moran-_d
 //
 
+#include <iostream>
 #include "nibbler.hh"
 
 Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
@@ -48,9 +49,14 @@ int Nibbler::process()
   while (loop)
     {
       while (loop == true && (key = this->lib->getEvent()) > 0)
-	loop = this->applyEvent(key);
+	{
+	  std::cout << "Key received : " << key << std::endl;
+	  loop = this->applyEvent(key);
+	}
+      /*
       for (std::list<Snake*>::iterator it = this->snakes.begin(); it != this->snakes.end(); ++it)
 	(*it)->advance();
+      */
       this->lib->refreshImg(this->map->getMap());
     }
   lib->closeLib();
