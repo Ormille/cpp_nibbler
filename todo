@@ -19,10 +19,6 @@ Dure durant 15tours ou jusqu'a ce que le snake termine son passage.
 
 ^^^^ PREVU
 
-Redimensionnement de la fenetre (Touches +/- : +1 pixel par case/ -1 pixel par case)
-OU +/- 1 ligne/colonne
-^^^^ PAS POSSIBLE AVEC IMPLEMENTATION ACTUELLE
-
 MultiSnake : faudrait des touches
 
 ===========
