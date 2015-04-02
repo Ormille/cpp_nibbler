@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:43:56 2015 moran-_d
-// Last update Wed Apr  1 15:55:48 2015 moran-_d
+// Last update Thu Apr  2 16:49:39 2015 moran-_d
 //
 
 #ifndef MAP_HH_
@@ -20,6 +20,9 @@ private:
 public:
   Map(unsigned int x, unsigned int y);
   ~Map();
+
+public:
+  void printMap();
 
 public:
   int **getMap() const;

@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Wed Apr  1 16:15:55 2015 moran-_d
+// Last update Thu Apr  2 16:52:15 2015 moran-_d
 //
 
 #include "Map.hh"
@@ -22,7 +22,10 @@ Snake::Snake(std::map<int, Item*> *items, Map *map,
   this->pos.push_front({x, y});
   this->items = items;
   this->map = map;
-  this->map->setCell(x, y, 1);
+  this->map->setCell(x - 2, y, 1);
+  this->map->setCell(x - 1, y, 2);
+  this->map->setCell(x, y, 2);
+  this->map->setCell(x + 1, y, 3);
   this->left_key = (this->right_key = -1);
   this->turn = 0;
   this->score = 0;

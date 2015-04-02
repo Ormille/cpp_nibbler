@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Thu Apr  2 16:30:41 2015 moran-_d
+// Last update Thu Apr  2 16:49:26 2015 moran-_d
 //
 
 #include <iostream>
@@ -46,6 +46,7 @@ int Nibbler::process()
 
   if (this->init() < 0)
     return (-1);
+  this->map->printMap();
   while (loop)
     {
       while (loop == true && (key = this->lib->getEvent()) > 0)

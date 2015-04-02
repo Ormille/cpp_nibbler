@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:46:57 2015 moran-_d
-// Last update Thu Apr  2 16:30:12 2015 moran-_d
+// Last update Thu Apr  2 16:35:56 2015 moran-_d
 //
 
 #include <iostream>
@@ -30,12 +30,6 @@ Map::Map(unsigned int x, unsigned int y)
       this->map[i][0] = 2147483647;
       this->map[i][this->y - 1] = 2147483647;
     }
-  for (i = 0; i < this->x; i++)
-    {
-      for (t = 0; t < this->y; t++)
-	std::cout << this->map[i][t] << " ";
-      std::cout << std::endl;
-    }
 }
 
 Map::~Map()
@@ -45,6 +39,19 @@ Map::~Map()
   for (i = 0; i < this->y; i++)
     delete[] this->map[i];
   delete[] this->map;
+}
+
+void Map::printMap()
+{
+  unsigned int i;
+  unsigned int t;
+
+  for (i = 0; i < this->x; i++)
+    {
+      for (t = 0; t < this->y; t++)
+	std::cout << this->map[i][t] << " ";
+      std::cout << std::endl;
+    }
 }
 
 int Map::setCell(unsigned int x, unsigned int y, int val)

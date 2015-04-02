@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Thu Apr  2 16:32:52 2015 moran-_d
+// Last update Thu Apr  2 16:52:42 2015 moran-_d
 */
 
 #include <sstream>
@@ -60,8 +60,10 @@ int	main(int argc, char **argv)
     }
   if ((lib = load_lib(argv[3], dll)) == NULL)
     return (-1);
-  x = strToInt(argv[1]);
-  y = strToInt(argv[2]);
+  if ((x = strToInt(argv[1])) < 6 || x > 150)
+    std::cout << "Invalid map width" << std::endl;
+  if ((y = strToInt(argv[2])) < 6 || y > 150)
+    std::cout << "Invalid map heigth" << std::endl;
   lib->initLib(x, y);
   game = load_game(x, y, lib);
   game->process();
