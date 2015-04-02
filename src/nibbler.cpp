@@ -1,11 +1,11 @@
 //
 // nibbler.cpp for nibbler in /home/moran-_d/rendu/cpp_nibbler/src
-// 
+//
 // Made by moran-_d
 // Login   <moran-_d@epitech.net>
-// 
+//
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Thu Apr  2 17:17:12 2015 moran-_d
+// Last update Thu Apr  2 18:03:34 2015 moran-_d
 //
 
 #include <iostream>
@@ -35,7 +35,7 @@ int Nibbler::init()
 
 bool Nibbler::applyEvent(int key)
 {
-  if (key == 424242)
+  if (key == 36) // touche echap
     return false;
   return true;
 }
