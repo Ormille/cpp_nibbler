@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Thu Apr  2 17:10:31 2015 moran-_d
+// Last update Thu Apr  2 17:17:12 2015 moran-_d
 //
 
 #include <iostream>
@@ -37,7 +37,7 @@ bool Nibbler::applyEvent(int key)
 {
   if (key == 424242)
     return false;
-  return (true);
+  return true;
 }
 
 int Nibbler::process()
