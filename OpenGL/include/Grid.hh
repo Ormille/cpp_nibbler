@@ -21,6 +21,7 @@ public:
   int	getMapHeigth() const;
 
   void	draw();// GridInfos *infos);
+  void	drawLines(float valEnd, float valDraw, bool tf);
 };
 
 #endif

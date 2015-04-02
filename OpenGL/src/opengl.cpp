@@ -46,8 +46,16 @@ void    OpenGL::initLib(unsigned int x, unsigned int y)
 
 int    OpenGL::getEvent()
 {
-  
-  return (0);
+  SDL_Event event;
+
+  while (SDL_PollEvent(&event))
+    {
+      if (event.type == SDL_QUIT)
+	return (27);
+      else if (event.type == SDL_KEYDOWN)
+	return (event.key.keysym.sym);
+    }
+  return (-1);
 }
 
 void    OpenGL::refreshImg(int **map)
@@ -70,46 +78,26 @@ void	OpenGL::closeLib()
 {
 
 }
-
+/*
 int	main()
 {
- /* int	z[2];
-  int	*fake_map = new int[10];*/
   OpenGL *test = new OpenGL();
-  SDL_Event event;
   bool	quit = false;
+  int saveKey;
 
   test->initLib(10, 15);
   while (!quit)
     {
-      SDL_WaitEvent(&event);
-
-      switch (event.type)
-        {
-        case SDL_QUIT:
-          quit = true;
-          break;
-        }
-
+      
+      if ((saveKey = test->getEvent()) == 36)
+	quit = true;
+      else if (saveKey > 0)
+	std::cout << "Key : " << saveKey << std::endl;
       //test->refreshImg(fake_map);
       test->testRefImg();
-/*
-      switch (event.key.keysym.sym)
-        {
-        case SDLK_LEFT:
-          x += 0.5;
-          break;
-        case SDLK_RIGHT:
-          x -= 0.5;
-          break;
-        default
-            :
-          break;
-        }
-*/
     }
   return (0); 
-}
+}*/
 
 extern "C"
 IObjGraph *nibbler_entry_point()
