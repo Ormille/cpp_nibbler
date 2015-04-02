@@ -27,7 +27,7 @@ MultiSnake : faudrait des touches
 
 espace = pause/finpause
 echap = quit
-² = new snake
+del = new snake
 // Les deux prochaines touches tapées seront la gauche/droite du snake
 
 
@@ -47,3 +47,16 @@ echap = quit
 3 = queue snake
 
 2147483647 = mur/bordure
+
+
+==========
+==TOUCHE==
+==========
+
+276 left
+275 right
+273 up
+274 down
+8 del
+27 echap
+32 space
