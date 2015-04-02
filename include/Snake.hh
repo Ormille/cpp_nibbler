@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Fri Apr  3 00:03:15 2015 moran-_d
+// Last update Fri Apr  3 00:15:50 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
@@ -56,7 +56,7 @@ private:
 
 public:
   void reduce_tail();
-  void harakiri();
+  int harakiri();
   int tryDirKey(int key);
   int advance();
 

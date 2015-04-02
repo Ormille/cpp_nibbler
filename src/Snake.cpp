@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 00:10:54 2015 moran-_d
+// Last update Fri Apr  3 00:23:51 2015 moran-_d
 //
 
 #include <iostream>
@@ -39,7 +39,11 @@ Snake::Snake(std::map<int, Item*> *items, Map *map,
 }
 
 Snake::~Snake()
-{}
+{
+  for (auto it = this->pos.begin();
+       it != this->pos.end(); ++it)
+    this->map->setCell((*it)[0], (*it)[1], 0);    
+}
 
 int Snake::getNextCell(unsigned int *objective) const
 {
@@ -58,7 +62,7 @@ int Snake::getNextCell(unsigned int *objective) const
   return (this->map->getCell(objective[0], objective[1]));
 }
 
-void Snake::harakiri()
+int Snake::harakiri()
 {
   /*
   s << "Snake N" << this->id << " is dead." << std::endl
@@ -66,6 +70,7 @@ void Snake::harakiri()
     << std::endl;
   */
   delete this;
+  return (-1);
 }
 
 int Snake::tryDirKey(int key)
@@ -97,16 +102,14 @@ int Snake::advance()
   if ((content = this->getNextCell(objective)) > 0)
     {
       std::cout << "FOUND OBSTACLE AHEAD OF SNAKE, VALUE = " << content << std::endl;
-      this->harakiri();
-      return (-1);
+      return (this->harakiri());
     }
   this->reduce_tail();
   if (content < 0)
     {
       (*(this->items))[content]->use(this);
       if (this->alive == false)
-	this->harakiri();
-      return (-1);
+	return (this->harakiri());
     }
   if (this->moved == false)
     {

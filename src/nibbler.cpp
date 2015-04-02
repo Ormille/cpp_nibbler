@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 00:09:58 2015 moran-_d
+// Last update Fri Apr  3 00:23:07 2015 moran-_d
 //
 
 #include <stdio.h>
@@ -62,7 +62,11 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
 	  (*it)->setCounter(counter -
 			    std::chrono::duration_cast<std::chrono::milliseconds>
 			    (SNAKE_WAIT * (*it)->getSpeedModifier()));
-	  (*it)->advance();
+	  if ((*it)->advance() == -1)
+	    {
+	      std::cout << "ERASED" << std::endl;
+	      this->snakes.erase(it);
+	    }
 	  this->map->printMap();
 	}
       it = next;
