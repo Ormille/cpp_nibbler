@@ -1,6 +1,10 @@
 
 PENSER A VIRER LE -g !!! :o
 
+Ligne de compil: ./nibbler 500 500 `pwd`/lib_nibbler_sfml.so
+
+Note = -42 pour l'instant, Diego a des else if dans Snake.cpp
+
 Idee Bonus :
 
 Portal Snake : permet de faire "jump" le snake

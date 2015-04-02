@@ -1,11 +1,11 @@
 //
 // Snake.cpp for snakle in /home/moran-_d/rendu/cpp_nibbler
-// 
+//
 // Made by moran-_d
 // Login   <moran-_d@epitech.net>
-// 
+//
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Thu Apr  2 16:52:15 2015 moran-_d
+// Last update Thu Apr  2 18:39:23 2015 terran_j
 //
 
 #include "Map.hh"
@@ -40,7 +40,7 @@ int Snake::getNextCell(unsigned int *objective) const
 {
   objective[0] = pos[0][0];
   objective[1] = pos[0][1];
-  if (direction == 0)
+  if (direction == 0) // ici t'as -42 coco, en cpp pas le droit a plus de if, else if, else
     --objective[0];
   else if (direction == 2)
     ++objective[0];
