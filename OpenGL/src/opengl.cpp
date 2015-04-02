@@ -70,12 +70,12 @@ void	OpenGL::closeLib()
 {
 
 }
-/*
+
 int	main()
-{*/
+{
  /* int	z[2];
   int	*fake_map = new int[10];*/
- /* OpenGL *test = new OpenGL();
+  OpenGL *test = new OpenGL();
   SDL_Event event;
   bool	quit = false;
 
@@ -92,7 +92,7 @@ int	main()
         }
 
       //test->refreshImg(fake_map);
-      test->testRefImg();*/
+      test->testRefImg();
 /*
       switch (event.key.keysym.sym)
         {
@@ -107,10 +107,10 @@ int	main()
           break;
         }
 */
- /*   }
+    }
   return (0); 
 }
-*/
+
 extern "C"
 IObjGraph *nibbler_entry_point()
 {
