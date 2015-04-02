@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Wed Apr  1 16:17:45 2015 moran-_d
+// Last update Thu Apr  2 16:30:41 2015 moran-_d
 //
 
 #include <iostream>
@@ -42,7 +42,7 @@ bool Nibbler::applyEvent(int key)
 int Nibbler::process()
 {
   bool loop = true;
-  int key;
+  int key = 0;
 
   if (this->init() < 0)
     return (-1);

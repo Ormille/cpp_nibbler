@@ -5,9 +5,10 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:46:57 2015 moran-_d
-// Last update Wed Apr  1 15:55:29 2015 moran-_d
+// Last update Thu Apr  2 16:30:12 2015 moran-_d
 //
 
+#include <iostream>
 #include "Map.hh"
 
 Map::Map(unsigned int x, unsigned int y)
@@ -16,18 +17,24 @@ Map::Map(unsigned int x, unsigned int y)
   unsigned int i;
   unsigned int t;
 
-  this->map = new int*[this->x]();
-  for (i = 0; i < this->y; i++)
+  this->map = new int*[this->x];
+  for (i = 0; i < this->x; i++)
     {
       this->map[i] = new int[this->y]();
-      if (i == 0 || i == this->y - 1)
-	for (t = 0; t < this->x; t++)
+      if (i == 0 || i == this->x - 1)
+	for (t = 0; t < this->y; t++)
 	  this->map[i][t] = 2147483647;
     }
-  for (i = 0; i < this->y; i++)
+  for (i = 0; i < this->x; i++)
     {
       this->map[i][0] = 2147483647;
-      this->map[i][this->x - 1] = 2147483647;
+      this->map[i][this->y - 1] = 2147483647;
+    }
+  for (i = 0; i < this->x; i++)
+    {
+      for (t = 0; t < this->y; t++)
+	std::cout << this->map[i][t] << " ";
+      std::cout << std::endl;
     }
 }
 
