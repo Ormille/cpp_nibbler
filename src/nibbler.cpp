@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Thu Apr  2 17:25:45 2015 terran_j
+// Last update Thu Apr  2 19:36:17 2015 moran-_d
 //
 
 #include <iostream>
@@ -35,9 +35,9 @@ int Nibbler::init()
 
 bool Nibbler::applyEvent(int key)
 {
-  if (key == 36) // touche echap
+  if (key == 27)
     return false;
-  return (true);
+  return true;
 }
 
 int Nibbler::process()
@@ -50,7 +50,7 @@ int Nibbler::process()
   this->map->printMap();
   while (loop)
     {
-      while (loop == true && (key = this->lib->getEvent()) > 0)
+      while (loop == true && (key = this->lib->getEvent()) >= 0)
 	{
 	  std::cout << "Key received : " << key << std::endl;
 	  loop = this->applyEvent(key);
