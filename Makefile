@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Thu Apr  2 12:01:11 2015 le-gue_n
+## Last update Thu Apr  2 15:04:54 2015 terran_j
 ##
 
 NAME_EXE =	nibbler
@@ -31,7 +31,7 @@ SRC_LIB3 =	MinilibX/src/minilibx.cpp
 OBJ_LIB3 =	$(SRC_LIB3:.cpp=.o)
 
 CXX  =		g++
-CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include -std=gnu++11
+CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include -std=gnu++11 -g
 
 LDFLAGS =	-ldl -rdynamic -lGL -lGLU -lSDL -lsfml-graphics -lsfml-window -lsfml-system
 
