@@ -5,15 +5,18 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Wed Apr  1 16:15:22 2015 moran-_d
+// Last update Fri Apr  3 00:03:15 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
 #define SNAKE_H_
 
+#include <chrono>
 #include <array>
 #include <map>
 #include <deque>
+
+#define SNAKE_WAIT (std::chrono::milliseconds(1000))
 
 class Item;
 class Map;
@@ -21,6 +24,9 @@ class Map;
 class Snake {
 private:
   bool alive;
+  std::chrono::milliseconds counter;
+
+private:
   bool moved;
   double speed_modifier;
   int direction;
@@ -59,6 +65,9 @@ public:
   int getColor() const;
   void setLeft(int const key);
   void setRight(int const key);
+  std::chrono::milliseconds getCounter() const;
+  void setCounter(const std::chrono::milliseconds&);
+  double getSpeedModifier() const;
 };
 
 #endif
