@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Thu Apr  2 16:26:15 2015 moran-_d
+// Last update Thu Apr  2 16:32:52 2015 moran-_d
 */
 
 #include <sstream>
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
     return (-1);
   x = strToInt(argv[1]);
   y = strToInt(argv[2]);
-  //  lib->initLib(x, y);
+  lib->initLib(x, y);
   game = load_game(x, y, lib);
   game->process();
   dll.CloseDL();
