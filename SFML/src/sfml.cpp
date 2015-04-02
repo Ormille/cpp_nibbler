@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Thu Apr  2 19:47:26 2015 terran_j
+// Last update Thu Apr  2 20:35:26 2015 terran_j
 //
 
 #include <iostream>
@@ -28,15 +28,14 @@ void	SFML::initLib(unsigned int x, unsigned int y)
   this->_y = y;
 
   // load des textures:
-  sf::Texture texture;
-  sf::Sprite sprite;
+  sf::Texture *texture = new sf::Texture();
 
-  if (!texture.loadFromFile("background.png"))
+  if (!texture->loadFromFile("SFML/textures/background.png"))
     {
       std::cerr << "Texture file doesn't exist." << std::endl;
       return;
     }
-  sprite.setTexture(texture);
+  sf::Sprite sprite(*texture);
   this->_background = sprite;
 }
 
@@ -79,6 +78,7 @@ void	SFML::refreshImg(int **map)
   this->_window->clear(sf::Color::Black);
 
   // draw
+  this->_background.setPosition(0, 0);
   this->_window->draw(this->_background);
 
   // display
@@ -93,7 +93,8 @@ void	SFML::affText(const std::string &toAff)
 void    SFML::closeLib()
 {
   this->_window->close();
-  // clean textures en mémoire
+  // clean textures en mémoire:
+  //  delete(this->_background);
 }
 
 extern "C"
