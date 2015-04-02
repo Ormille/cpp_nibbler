@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Thu Apr  2 16:49:26 2015 moran-_d
+// Last update Thu Apr  2 17:03:58 2015 moran-_d
 //
 
 #include <iostream>
@@ -51,6 +51,8 @@ int Nibbler::process()
     {
       while (loop == true && (key = this->lib->getEvent()) > 0)
 	{
+	  if (key == 424242)
+	    loop = false;
 	  std::cout << "Key received : " << key << std::endl;
 	  loop = this->applyEvent(key);
 	}
