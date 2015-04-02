@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Wed Apr  1 18:18:56 2015 terran_j
+## Last update Thu Apr  2 12:01:11 2015 le-gue_n
 ##
 
 NAME_EXE =	nibbler
@@ -21,7 +21,9 @@ SRC_LIB1 =	SFML/src/sfml.cpp
 OBJ_LIB1 =	$(SRC_LIB1:.cpp=.o)
 
 NAME_LIB2 =	lib_nibbler_opengl.so
-SRC_LIB2 =	OpenGL/src/opengl.cpp
+SRC_LIB2 =	OpenGL/src/opengl.cpp \
+		OpenGL/src/aff_draw.cpp \
+		OpenGL/src/Cube.cpp
 OBJ_LIB2 =	$(SRC_LIB2:.cpp=.o)
 
 NAME_LIB3 =	lib_nibbler_minilibx.so
@@ -31,12 +33,12 @@ OBJ_LIB3 =	$(SRC_LIB3:.cpp=.o)
 CXX  =		g++
 CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include -std=gnu++11
 
-LDFLAGS =	-ldl -rdynamic
+LDFLAGS =	-ldl -rdynamic -lGL -lGLU -lSDL -lsfml-graphics -lsfml-window -lsfml-system
 
 make:	all
 
 $(NAME_EXE):$(OBJ_EXE)
-	$(CXX) -o $(NAME_EXE) $(OBJ_EXE) $(LDFLAGS)
+	$(CXX) $(LDFLAGS) -o $(NAME_EXE) $(OBJ_EXE) $(LDFLAGS)
 
 $(NAME_LIB1):$(OBJ_LIB1)
 	$(CXX) -shared -o $(NAME_LIB1) $(OBJ_LIB1) -lsfml-graphics -lsfml-window -lsfml-system

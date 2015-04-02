@@ -11,7 +11,12 @@
 #ifndef OPENGL_HH__
 # define OPENGL_HH__
 
+#include <SDL/SDL.h>
 #include "IObjGraph.hpp"
+#include "Grid.hh"
+
+#define winWidth 480
+#define winHeight 640
 
 class OpenGL : public IObjGraph
 {
@@ -19,15 +24,19 @@ public:
   OpenGL();
   ~OpenGL();
 
-private:
-  void initLib(unsigned int x, unsigned int y);
-  int getEvent();
-  void refreshImg(int **map);
-  void affText(const std::string &toAff);
-  void closeLib();
+  void	initLib(unsigned int x, unsigned int y);
+  int	getEvent();
+  void	refreshImg(int **map);
+  void	testRefImg(); // a virer
+  void	affText(const std::string &toAff);
+  void	closeLib();
 
-  int _x;
-  int _y;
+private:
+
+  int		_mapX;
+  int		_mapY;
+  SDL_Surface	*_screen;
+  GridInfos	*_grid;
 };
 
 #endif
