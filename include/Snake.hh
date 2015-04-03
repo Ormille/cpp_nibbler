@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Fri Apr  3 15:03:03 2015 moran-_d
+// Last update Fri Apr  3 17:42:48 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
@@ -16,7 +16,7 @@
 #include <map>
 #include <deque>
 
-#define SNAKE_WAIT (std::chrono::milliseconds(1000))
+#define SNAKE_WAIT (std::chrono::milliseconds(250))
 
 class Item;
 class Map;

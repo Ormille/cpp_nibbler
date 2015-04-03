@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 16:12:27 2015 moran-_d
+// Last update Fri Apr  3 17:34:40 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -23,7 +23,6 @@ Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
   this->lib = lib;
   this->paused = false;
   this->buildEvents();
-  this->buildItems();
 }
 
 Nibbler::~Nibbler()
@@ -42,6 +41,7 @@ int Nibbler::process()
 
   if (this->popSnake(this->map->getX() / 2, this->map->getY() / 2, 0xFF00FF) < 0)
     return (-1);
+  this->buildItems();
   this->map->printMap();
   this->ticked = std::chrono::system_clock::now();
   while (loop)
