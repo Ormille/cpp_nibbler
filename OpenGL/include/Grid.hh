@@ -20,7 +20,7 @@ public:
   int	getMapWidth() const;
   int	getMapHeigth() const;
 
-  void	draw();// GridInfos *infos);
+  void	draw(int **map);// GridInfos *infos);
   void	drawLines(float valEnd, float valDraw, bool tf);
 };
 

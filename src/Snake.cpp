@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 00:23:51 2015 moran-_d
+// Last update Fri Apr  3 08:30:09 2015 le-gue_n
 //
 
 #include <iostream>
@@ -19,7 +19,7 @@ Snake::Snake(std::map<int, Item*> *items, Map *map,
 {
   this->alive = true;
   this->counter = std::chrono::milliseconds::zero();
-  this->speed_modifier = 1;
+  this->speed_modifier = 0.2;
   this->direction = 0;
   this->pos.push_front({x + 1, y});
   this->pos.push_front({x, y});
@@ -42,7 +42,7 @@ Snake::~Snake()
 {
   for (auto it = this->pos.begin();
        it != this->pos.end(); ++it)
-    this->map->setCell((*it)[0], (*it)[1], 0);    
+    this->map->setCell((*it)[0], (*it)[1], 0);
 }
 
 int Snake::getNextCell(unsigned int *objective) const
