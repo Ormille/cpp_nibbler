@@ -25,8 +25,10 @@ OpenGL::OpenGL()
 OpenGL::~OpenGL()
 {}
 
-void    OpenGL::initLib(unsigned int x, unsigned int y)
+int    OpenGL::initLib(unsigned int x, unsigned int y)
 {
+  if (x > 100 || y > 100 || x < 20 || y < 20)
+    return (-1);
   SDL_Surface	*screen;
 
   SDL_Init(SDL_INIT_VIDEO);
@@ -37,11 +39,11 @@ void    OpenGL::initLib(unsigned int x, unsigned int y)
   glLoadIdentity();
   gluPerspective(70, (double)winHeight / winWidth, 1, 1000);
   glEnable(GL_DEPTH_TEST);
-
   this->_mapX = x;
   this->_mapY = y;
   this->_screen = screen;
   this->_grid = new GridInfos(x, y);
+  return (0);
 }
 
 int    OpenGL::getEvent()

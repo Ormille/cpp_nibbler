@@ -24,26 +24,6 @@ GridInfos::GridInfos(int mapW, int mapH)
   this->sizeL = 3.0;
   this->grid = 1.0;
 }
-/*
-GridInfos::GridInfos(const GridInfos &other)
-{
-  this->mapWidth = other.mapWidth;
-  this->mapHeight = other.mapHeight;
-  this->sizeL = other.sizeL;
-  this->grid = other.grid;
-}
-
-GridInfos	&GridInfos::operator=(const GridInfos &other)
-{
-  if (this != &other)
-    {
-      this->mapWidth = other.mapWidth;
-      this->mapHeight = other.mapHeight;
-      this->sizeL = other.sizeL;
-      this->grid = other.grid;
-    }
-  return (*this);
-}*/
 
 GridInfos::~GridInfos()
 {
@@ -86,8 +66,9 @@ void	GridInfos::draw(int **map)
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt(-30, 30, 75, 0, 0, 0, 0, 0, 1);
-  // positions de la camera, postions point fixe par cam, positions vercteur vertical
+  gluLookAt(-((this->mapHeight / 2) + 5), (this->mapWidth / 2) + 5,
+	    this->mapWidth > this->mapHeight ? this->mapWidth + 5 : this->mapHeight + 5,
+	    0, 0, 0, 0, 0, 1);
   cube.drawMapItems(map);
   this->drawLines(this->mapHeight / 2, this->mapWidth / 2, true);
   this->drawLines(this->mapWidth / 2, this->mapHeight / 2, false);

@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 16:58:47 2015 Julie Terranova
-// Last update Wed Apr  1 18:28:57 2015 terran_j
+// Last update Fri Apr  3 15:38:08 2015 le-gue_n
 //
 
 #include <iostream>
@@ -18,7 +18,7 @@ Minilibx::Minilibx()
 Minilibx::~Minilibx()
 {}
 
-void    Minilibx::initLib(unsigned int x, unsigned int y)
+int    Minilibx::initLib(unsigned int x, unsigned int y)
 {
   this->_x = x;
   this->_y = y;

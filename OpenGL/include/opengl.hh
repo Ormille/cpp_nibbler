@@ -24,7 +24,7 @@ public:
   OpenGL();
   ~OpenGL();
 
-  void	initLib(unsigned int x, unsigned int y);
+  int	initLib(unsigned int x, unsigned int y);
   int	getEvent();
   void	refreshImg(int **map);
   void	affText(const std::string &toAff);

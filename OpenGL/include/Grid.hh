@@ -10,8 +10,6 @@ private:
   float	grid;
 public:
   GridInfos(int mapW, int mapH);
- /* GridInfos(const GridInfos &);
-  GridInfos	&operator=(const GridInfos &);*/
   ~GridInfos();
 
   int	getMapWidth() const;
