@@ -15,8 +15,8 @@
 #include "IObjGraph.hpp"
 #include "Grid.hh"
 
-#define winWidth 480
-#define winHeight 640
+#define winHeight 1920
+#define winWidth 1080
 
 class OpenGL : public IObjGraph
 {
@@ -27,7 +27,6 @@ public:
   void	initLib(unsigned int x, unsigned int y);
   int	getEvent();
   void	refreshImg(int **map);
-  void	testRefImg(); // a virer
   void	affText(const std::string &toAff);
   void	closeLib();
 

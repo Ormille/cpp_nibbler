@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:37:22 2015 Julie Terranova
-// Last update Fri Apr  3 11:49:56 2015 moran-_d
+// Last update Fri Apr  3 14:02:40 2015 moran-_d
 */
 
 #ifndef NIBBLER_HH_
@@ -19,32 +19,44 @@
 #include "Map.hh"
 #include "IObjGraph.hpp"
 
+class Nibbler;
+
+typedef bool (Nibbler::*eventPtr)();
+
 class Nibbler {
 private:
   std::list<Snake*> snakes;
   std::map<int, Item*> *items;
+  std::map<int, eventPtr> events;
   IObjGraph *lib;
   Map *map;
+
+private:
   std::chrono::system_clock::time_point ticked;
   bool paused;
-
-private:
   unsigned int snakeCount;
-
-private:
-  int popSnake(unsigned int, unsigned int, int);
-  void popNewSnake();
-  void reset_snake() const;
-  void process_snake(std::chrono::system_clock::time_point &last);
 
 public:
   Nibbler(unsigned int x, unsigned int y, IObjGraph *lib);
   ~Nibbler();
 
 public:
-  int init();
-  bool applyEvent(int key);
   int process();
+
+public:
+  bool applyEvent(int key);
+
+private:
+  void buildEvents();
+  bool eventQuit();
+  bool eventPopSnake();
+  bool eventPause();
+
+private:
+  int popSnake(unsigned int, unsigned int, int);
+  void popNewSnake();
+  void reset_snake() const;
+  void process_snake(std::chrono::system_clock::time_point &last);
 };
 
 #endif
