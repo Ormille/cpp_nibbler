@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Fri Apr  3 18:16:44 2015 terran_j
+// Last update Fri Apr  3 18:44:32 2015 terran_j
 //
 
 #include <iostream>
@@ -46,23 +46,23 @@ int	SFML::initLib(unsigned int x, unsigned int y)
   sf::Sprite bords(*texture2);
   this->_bords = bords;
 
-  // sf::Texture *texture3 = new sf::Texture();
-  // if (!texture3->loadFromFile("SFML/textures/snake.png"))
-  //   return (-1);
-  // sf::Sprite snake(*texture3);
-  // this->_snake = snake;
+  sf::Texture *texture3 = new sf::Texture();
+  if (!texture3->loadFromFile("SFML/textures/snake.png"))
+    return (-1);
+  sf::Sprite snake(*texture3);
+  this->_snake = snake;
 
-  // sf::Texture *texture4 = new sf::Texture();
-  // if (!texture4->loadFromFile("SFML/textures/tete.png"))
-  //   return (-1);
-  // sf::Sprite tete(*texture4);
-  // this->_tete = tete;
+  sf::Texture *texture4 = new sf::Texture();
+  if (!texture4->loadFromFile("SFML/textures/tete.png"))
+    return (-1);
+  sf::Sprite tete(*texture4);
+  this->_tete = tete;
 
-  // sf::Texture *texture5 = new sf::Texture();
-  // if (!texture5->loadFromFile("SFML/textures/queue.png"))
-  //   return (-1);
-  // sf::Sprite queue(*texture5);
-  // this->_queue = queue;
+  sf::Texture *texture5 = new sf::Texture();
+  if (!texture5->loadFromFile("SFML/textures/queue.png"))
+    return (-1);
+  sf::Sprite queue(*texture5);
+  this->_queue = queue;
 
   sf::Texture *texture6 = new sf::Texture();
   if (!texture6->loadFromFile("SFML/textures/fruit1.png"))
@@ -133,10 +133,8 @@ void	SFML::refreshImg(int **map)
   int x = 0;
   int y;
 
-  // clear
   this->_window->clear(sf::Color::Black);
 
-  // draw
   this->_background.setPosition(0, 0);
   this->_window->draw(this->_background);
 
@@ -152,10 +150,27 @@ void	SFML::refreshImg(int **map)
 	      this->_bords.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
 	      this->_window->draw(this->_bords);
 	    }
-
-
-
-
+	  if (map[x][y] == 1)
+	    {
+	      this->_tete.setPosition(x * SIZE, y * SIZE);
+	      this->_tete.setScale(1.0f, 1.0f);
+	      this->_tete.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_tete);
+	    }
+	  if (map[x][y] == 2)
+	    {
+	      this->_snake.setPosition(x * SIZE, y * SIZE);
+	      this->_snake.setScale(1.0f, 1.0f);
+	      this->_snake.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_snake);
+	    }
+	  if (map[x][y] == 3)
+	    {
+	      this->_queue.setPosition(x * SIZE, y * SIZE);
+	      this->_queue.setScale(1.0f, 1.0f);
+	      this->_queue.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_queue);
+	    }
 	  if (map[x][y] == -1)
 	    {
 	      this->_fruit1.setPosition(x * SIZE, y * SIZE);
@@ -195,7 +210,6 @@ void	SFML::refreshImg(int **map)
       x++;
     }
 
-  // display
   this->_window->display();
 }
 
