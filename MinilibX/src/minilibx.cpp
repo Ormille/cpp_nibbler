@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 16:58:47 2015 Julie Terranova
-// Last update Fri Apr  3 15:38:08 2015 le-gue_n
+// Last update Fri Apr  3 15:48:37 2015 terran_j
 //
 
 #include <iostream>
@@ -22,6 +22,7 @@ int    Minilibx::initLib(unsigned int x, unsigned int y)
 {
   this->_x = x;
   this->_y = y;
+  return (0);
 }
 
 int     Minilibx::getEvent()

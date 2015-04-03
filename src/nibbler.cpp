@@ -5,11 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-<<<<<<< HEAD
-// Last update Fri Apr  3 15:42:14 2015 terran_j
-=======
-// Last update Fri Apr  3 14:11:15 2015 moran-_d
->>>>>>> c720c18016b65ead1117a2d06e605d0feacc0650
+// Last update Fri Apr  3 15:48:00 2015 terran_j
 //
 
 #include <cstdlib>
@@ -187,27 +183,4 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
       it = next;
     }
   last = cur;
-}
-
-int Nibbler::process()
-{
-  bool loop = true;
-  int key = 0;
-
-  if (this->popSnake(this->map->getX() / 2, this->map->getY() / 2, 0xFF00FF) < 0)
-    return (-1);
-  //  this->map->printMap();
-  this->ticked = std::chrono::system_clock::now();
-  while (loop)
-    {
-      while (loop == true && (key = this->lib->getEvent()) >= 0)
-	{
-	  std::cout << "Key received : " << key << std::endl;
-	  loop = this->applyEvent(key);
-	}
-      this->process_snake(this->ticked);
-      this->lib->refreshImg(this->map->getMap());
-    }
-  lib->closeLib();
-  return (0);
 }
