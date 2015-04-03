@@ -60,13 +60,13 @@ int    OpenGL::getEvent()
 
 void    OpenGL::refreshImg(int **map)
 {
-  map = map; // a virer
-  this->_grid->draw();
+  //map = map; // a virer
+  this->_grid->draw(map);
 }
 
 void	OpenGL::testRefImg()
 {
-  this->_grid->draw();
+  //this->_grid->draw();
 }
 
 void    OpenGL::affText(const std::string &toAff)

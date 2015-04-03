@@ -83,7 +83,7 @@ void	GridInfos::drawLines(float valEnd, float valDraw, bool tf)
   tf ? glVertex3f(valDraw, i, 0.0f) : glVertex3f(i, valDraw, 0.0f);
 }
 
-void	GridInfos::draw()
+void	GridInfos::draw(int **map)
 {
   Cube	cube(this->mapWidth, this->mapHeight);
   
@@ -92,10 +92,10 @@ void	GridInfos::draw()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  gluLookAt(3, 4, 15, 0, 0, 0, 0, 0, 1);
+  gluLookAt(-10, 10, 15, 0, 0, 0, 0, 0, 1);
   // positions de la camera, postions point fixe par cam, positions vercteur vertical
-
-  cube.drawCube();
+  cube.drawMapItems(map);
+  //cube.drawCube();
   this->drawLines(this->mapHeight / 2, this->mapWidth / 2, true);
   this->drawLines(this->mapWidth / 2, this->mapHeight / 2, false);
   glEnd();

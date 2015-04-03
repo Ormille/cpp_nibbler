@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Fri Apr  3 00:15:50 2015 moran-_d
+// Last update Fri Apr  3 11:19:58 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
@@ -63,11 +63,12 @@ public:
 public:
   int getScore() const;
   int getColor() const;
-  void setLeft(int const key);
-  void setRight(int const key);
+  void setLeft(int key);
+  void setRight(int key);
   std::chrono::milliseconds getCounter() const;
   void setCounter(const std::chrono::milliseconds&);
   double getSpeedModifier() const;
+  void setMoved(bool);
 };
 
 #endif

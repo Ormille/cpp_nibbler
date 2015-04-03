@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 08:38:06 2015 moran-_d
+// Last update Fri Apr  3 11:20:50 2015 moran-_d
 //
 
 #include <iostream>
@@ -19,6 +19,7 @@ Snake::Snake(std::map<int, Item*> *items, Map *map,
 {
   this->alive = true;
   this->counter = std::chrono::milliseconds::zero();
+  this->moved = false;
   this->speed_modifier = 1;
   this->direction = 0;
   this->pos.push_front({x + 1, y});
@@ -43,23 +44,23 @@ Snake::~Snake()
 {
   for (auto it = this->pos.begin();
        it != this->pos.end(); ++it)
-    this->map->setCell((*it)[0], (*it)[1], 0);    
+    this->map->setCell((*it)[0], (*it)[1], 0);
 }
 
 int Snake::getNextCell(unsigned int *objective) const
 {
+  int direction;
+
+  direction = this->direction;
   objective[0] = this->pos[0][0];
   objective[1] = this->pos[0][1];
-  if (direction == 0) // ici t'as -42 coco, en cpp pas le droit a plus de if, else if, else
-    --objective[0];
-  else if (direction == 2)
-    ++objective[0];
-  else if (direction == 1)
-    --objective[1];
-  else if (direction == 3)
-    ++objective[1];
-  std::cout << "objective : " << objective[0] << ":" << objective[1] << std::endl;
-  std::cout << "pos       : " << this->pos[0][0] << ":" << this->pos[0][1] << std::endl;
+  if (direction == 0 || direction == 2)
+    objective[0] += (!!direction) - (!direction);
+  else if (direction == 1 || direction == 3)
+    {
+      --direction;
+      objective[1] += (!!direction) - (!direction);
+    }
   return (this->map->getCell(objective[0], objective[1]));
 }
 
@@ -76,12 +77,19 @@ int Snake::harakiri()
 
 int Snake::tryDirKey(int key)
 {
+  if (this->moved == true)
+    return (-1);
   if (key == this->left_key)
     {
+      direction = (direction + 1) % 4;
+      this->moved = true;
       return (0);
     }
   else if (key == this->right_key)
     {
+      if ((direction = (direction - 1)) < 0)
+	direction = 3;
+      this->moved = true;
       return (0);
     }
   return (-1);
@@ -99,7 +107,6 @@ int Snake::advance()
   unsigned int objective[2];
   int content;
 
-  this->moved = false;
   if ((content = this->getNextCell(objective)) > 0)
     {
       std::cout << "FOUND OBSTACLE AHEAD OF SNAKE, VALUE = " << content << std::endl;
@@ -118,8 +125,15 @@ int Snake::advance()
       this->map->setCell(objective[0], objective[1], 1);
       this->pos.push_front({objective[0], objective[1]});
     }
+  this->moved = false;
   return (0);
 }
+
+void Snake::setLeft(int k)
+{ this->left_key = k; }
+
+void Snake::setRight(int k)
+{ this->right_key = k; }
 
 std::chrono::milliseconds Snake::getCounter() const
 { return (this->counter); }
@@ -129,3 +143,6 @@ void Snake::setCounter(const std::chrono::milliseconds &d)
 
 double Snake::getSpeedModifier() const
 { return (this->speed_modifier); }
+
+void Snake::setMoved(bool b)
+{ this->moved = b; }

@@ -5,9 +5,11 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Thu Apr  2 16:52:42 2015 moran-_d
+// Last update Fri Apr  3 11:24:32 2015 moran-_d
 */
 
+#include <ctime>
+#include <cstdlib>
 #include <sstream>
 #include <stdlib.h>
 #include <iostream>
@@ -58,6 +60,7 @@ int	main(int argc, char **argv)
       std::cout << "Usage: nibbler MapX MapY GraphicLibrary" << std::endl;
       return (-1);
     }
+  srandom(time(NULL));
   if ((lib = load_lib(argv[3], dll)) == NULL)
     return (-1);
   if ((x = strToInt(argv[1])) < 6 || x > 150)
