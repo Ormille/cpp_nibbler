@@ -15,8 +15,8 @@
 #include "IObjGraph.hpp"
 #include "Grid.hh"
 
-#define winWidth 480
-#define winHeight 640
+#define winHeight 1920
+#define winWidth 1080
 
 class OpenGL : public IObjGraph
 {

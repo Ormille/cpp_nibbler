@@ -91,8 +91,8 @@ void	GridInfos::draw(int **map)
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-
-  gluLookAt(-10, 10, 15, 0, 0, 0, 0, 0, 1);
+  
+  gluLookAt(-30, 30, 70, 0, 0, 0, 0, 0, 1);
   // positions de la camera, postions point fixe par cam, positions vercteur vertical
   cube.drawMapItems(map);
   //cube.drawCube();
