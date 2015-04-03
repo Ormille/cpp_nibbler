@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:37:22 2015 Julie Terranova
-// Last update Fri Apr  3 11:02:18 2015 moran-_d
+// Last update Fri Apr  3 11:49:56 2015 moran-_d
 */
 
 #ifndef NIBBLER_HH_
@@ -25,6 +25,7 @@ private:
   std::map<int, Item*> *items;
   IObjGraph *lib;
   Map *map;
+  std::chrono::system_clock::time_point ticked;
   bool paused;
 
 private:

@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 11:35:01 2015 moran-_d
+// Last update Fri Apr  3 12:33:03 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -39,6 +39,7 @@ int Nibbler::popSnake(unsigned int x, unsigned int y, int color)
 
 void Nibbler::popNewSnake()
 {
+  std::chrono::system_clock::time_point cur = std::chrono::system_clock::now();
   int tries = 0;
   bool ok = false;
   int obj[2];
@@ -67,6 +68,7 @@ void Nibbler::popNewSnake()
 	}
       ++tries;
     }
+  this->ticked += (std::chrono::system_clock::now() - cur);
 }
 
 void Nibbler::reset_snake() const
@@ -120,13 +122,13 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
 
 int Nibbler::process()
 {
-  std::chrono::system_clock::time_point last = std::chrono::system_clock::now();
   bool loop = true;
   int key = 0;
 
   if (this->popSnake(this->map->getX() / 2, this->map->getY() / 2, 0xFF00FF) < 0)
     return (-1);
   this->map->printMap();
+  this->ticked = std::chrono::system_clock::now();
   while (loop)
     {
       while (loop == true && (key = this->lib->getEvent()) >= 0)
@@ -134,7 +136,7 @@ int Nibbler::process()
 	  std::cout << "Key received : " << key << std::endl;
 	  loop = this->applyEvent(key);
 	}
-      this->process_snake(last);
+      this->process_snake(this->ticked);
       this->lib->refreshImg(this->map->getMap());
     }
   lib->closeLib();
