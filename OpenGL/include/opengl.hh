@@ -27,7 +27,6 @@ public:
   void	initLib(unsigned int x, unsigned int y);
   int	getEvent();
   void	refreshImg(int **map);
-  void	testRefImg(); // a virer
   void	affText(const std::string &toAff);
   void	closeLib();
 

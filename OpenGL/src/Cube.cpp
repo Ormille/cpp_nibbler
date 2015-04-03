@@ -49,9 +49,9 @@ void	Cube::drawCube(int x, int y, std::tuple<int, int, int> rgb)
   glBegin(GL_QUADS);
 // Top, front and left -face must be drawn counterclockwise and back, bottom and right in clockwise!
 
- // glColor3f(std::get<0>(rgb), std::get<1>(rgb), std::get<2>(rgb)); // front
- glColor3ub(std::get<0>(rgb), std::get<1>(rgb), std::get<2>(rgb)); // front
-  
+// glColor3f(std::get<0>(rgb), std::get<1>(rgb), std::get<2>(rgb)); // front
+  glColor3ub(std::get<0>(rgb), std::get<1>(rgb), std::get<2>(rgb)); // front
+
   glVertex3f(tmpW - 1, tmpH + 1, 1.0f);// -0.5f, 0.5f, 0.5f);
   glVertex3f(tmpW, tmpH + 1, 1.0f);// 0.5f, 0.5f, 0.5f);
   glVertex3f(tmpW, tmpH + 1, 0.0f);// 0.5f, 0.5f, -0.5f);
@@ -93,13 +93,14 @@ void	Cube::drawCube(int x, int y, std::tuple<int, int, int> rgb)
 void	Cube::drawSnake(int x, int y, int nb)
 {
   std::tuple<int, int, int> rgb;
-  //nb = nb; // tmp
+
   if (nb == 1)
     rgb = std::make_tuple(133, 75, 25);//(19, 138, 41);
-  else if (nb == 3)
-    rgb = std::make_tuple(184, 159, 103);//(3, 59, 13);
   else
-    rgb = std::make_tuple(82, 44, 11);//(13, 97, 28);
+    if (nb == 3)
+      rgb = std::make_tuple(184, 159, 103);//(3, 59, 13);
+    else
+      rgb = std::make_tuple(82, 44, 11);//(13, 97, 28);
   this->drawCube(x, y, rgb);
 }
 
@@ -123,15 +124,17 @@ void	Cube::drawMapItems(int **map)
     {
       int	x = 0;
       while (x < this->mapH + 2)
-	{
-	  if (map[y][x] < 0)
-	    this->drawOther(x, y, map[y][x]);
-	  else if (map[y][x] > 3)
-	    this->drawCube(x, y, rgb);
-	  else if (map[y][x] > 0)
-	    this->drawSnake(x, y, map[y][x]);
-	  x++;
-	}
+        {
+          if (map[y][x] < 0)
+            this->drawOther(x, y, map[y][x]);
+          else
+            if (map[y][x] > 3)
+              this->drawCube(x, y, rgb);
+            else
+              if (map[y][x] > 0)
+                this->drawSnake(x, y, map[y][x]);
+          x++;
+        }
       y++;
     }
 }

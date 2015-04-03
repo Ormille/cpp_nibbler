@@ -66,13 +66,7 @@ int    OpenGL::getEvent()
 
 void    OpenGL::refreshImg(int **map)
 {
-  //map = map; // a virer
   this->_grid->draw(map);
-}
-
-void	OpenGL::testRefImg()
-{
-  //this->_grid->draw();
 }
 
 void    OpenGL::affText(const std::string &toAff)
@@ -84,26 +78,6 @@ void	OpenGL::closeLib()
 {
 
 }
-/*
-int	main()
-{
-  OpenGL *test = new OpenGL();
-  bool	quit = false;
-  int saveKey;
-
-  test->initLib(10, 15);
-  while (!quit)
-    {
-      
-      if ((saveKey = test->getEvent()) == 36)
-	quit = true;
-      else if (saveKey > 0)
-	std::cout << "Key : " << saveKey << std::endl;
-      //test->refreshImg(fake_map);
-      test->testRefImg();
-    }
-  return (0); 
-}*/
 
 extern "C"
 IObjGraph *nibbler_entry_point()

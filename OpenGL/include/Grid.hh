@@ -17,7 +17,7 @@ public:
   int	getMapWidth() const;
   int	getMapHeigth() const;
 
-  void	draw(int **map);// GridInfos *infos);
+  void	draw(int **map);
   void	drawLines(float valEnd, float valDraw, bool tf);
 };
 
