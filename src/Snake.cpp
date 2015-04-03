@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 00:23:51 2015 moran-_d
+// Last update Fri Apr  3 08:38:06 2015 moran-_d
 //
 
 #include <iostream>
@@ -31,7 +31,8 @@ Snake::Snake(std::map<int, Item*> *items, Map *map,
   this->map->setCell(x - 1, y, 2);
   this->map->setCell(x, y, 2);
   this->map->setCell(x + 1, y, 3);
-  this->left_key = (this->right_key = -1);
+  this->left_key = 276;
+  this->right_key = 275;
   this->turn = 0;
   this->score = 0;
   this->color = color;
