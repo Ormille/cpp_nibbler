@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Fri Apr  3 17:21:29 2015 terran_j
+// Last update Fri Apr  3 18:16:44 2015 terran_j
 //
 
 #include <iostream>
@@ -27,7 +27,7 @@ int	SFML::initLib(unsigned int x, unsigned int y)
       return (-1);
     }
 
-  n = new sf::RenderWindow(sf::VideoMode(x * SIZE, y * SIZE), "Nibbler SFML",
+  n = new sf::RenderWindow(sf::VideoMode((2 + x) * SIZE, (2 + y) * SIZE), "Nibbler SFML",
 			   sf::Style::Titlebar | sf::Style::Close);
   this->_window = n;
   this->_x = x;
@@ -46,29 +46,53 @@ int	SFML::initLib(unsigned int x, unsigned int y)
   sf::Sprite bords(*texture2);
   this->_bords = bords;
 
-  // sf::Texture *texture = new sf::Texture();
-  // if (!texture->loadFromFile("SFML/textures/snake.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  // sf::Texture *texture3 = new sf::Texture();
+  // if (!texture3->loadFromFile("SFML/textures/snake.png"))
   //   return (-1);
-  // sf::Sprite snake(*texture);
+  // sf::Sprite snake(*texture3);
   // this->_snake = snake;
 
-  // sf::Texture *texture = new sf::Texture();
-  // if (!texture->loadFromFile("SFML/textures/tete.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  // sf::Texture *texture4 = new sf::Texture();
+  // if (!texture4->loadFromFile("SFML/textures/tete.png"))
   //   return (-1);
-  // sf::Sprite tete(*texture);
+  // sf::Sprite tete(*texture4);
   // this->_tete = tete;
 
-  // sf::Texture *texture = new sf::Texture();
-  // if (!texture->loadFromFile("SFML/textures/queue.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  // sf::Texture *texture5 = new sf::Texture();
+  // if (!texture5->loadFromFile("SFML/textures/queue.png"))
   //   return (-1);
-  // sf::Sprite queue(*texture);
+  // sf::Sprite queue(*texture5);
   // this->_queue = queue;
 
-  // sf::Texture *texture = new sf::Texture();
-  // if (!texture->loadFromFile("SFML/textures/fruit1.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  sf::Texture *texture6 = new sf::Texture();
+  if (!texture6->loadFromFile("SFML/textures/fruit1.png"))
+    return (-1);
+  sf::Sprite fruit1(*texture6);
+  this->_fruit1 = fruit1;
+
+  sf::Texture *texture7 = new sf::Texture();
+  if (!texture7->loadFromFile("SFML/textures/fruit2.png"))
+    return (-1);
+  sf::Sprite fruit2(*texture7);
+  this->_fruit2 = fruit2;
+
+  sf::Texture *texture8 = new sf::Texture();
+  if (!texture8->loadFromFile("SFML/textures/fruit3.png"))
+    return (-1);
+  sf::Sprite fruit3(*texture8);
+  this->_fruit3 = fruit3;
+
+  sf::Texture *texture9 = new sf::Texture();
+  if (!texture9->loadFromFile("SFML/textures/fruit4.png"))
+    return (-1);
+  sf::Sprite fruit4(*texture9);
+  this->_fruit4 = fruit4;
+
+  // sf::Texture *portal = new sf::Texture();
+  // if (!portal->loadFromFile("SFML/textures/portal.png"))
   //   return (-1);
-  // sf::Sprite fruit1(*texture);
-  // this->_fruit1 = fruit1;
+  // sf::Sprite portal(*portal);
+  // this->_portal = portal;
 
   return (0);
 }
@@ -116,10 +140,10 @@ void	SFML::refreshImg(int **map)
   this->_background.setPosition(0, 0);
   this->_window->draw(this->_background);
 
-  while (x * SIZE < this->_x)
+  while (x < this->_x + 2)
     {
       y = 0;
-      while (y * SIZE < this->_y)
+      while (y < this->_y + 2)
 	{
 	  if (map[x][y] == 2147483647)
 	    {
@@ -130,6 +154,41 @@ void	SFML::refreshImg(int **map)
 	    }
 
 
+
+
+	  if (map[x][y] == -1)
+	    {
+	      this->_fruit1.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit1.setScale(1.0f, 1.0f);
+	      this->_fruit1.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit1);
+	    }
+	  if (map[x][y] == -2)
+	    {
+	      this->_fruit2.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit2.setScale(1.0f, 1.0f);
+	      this->_fruit2.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit2);
+	    }
+	  if (map[x][y] == -3)
+	    {
+	      this->_fruit3.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit3.setScale(1.0f, 1.0f);
+	      this->_fruit3.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit3);
+	    }
+	  if (map[x][y] == -4)
+	    {
+	      this->_fruit4.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit4.setScale(1.0f, 1.0f);
+	      this->_fruit4.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit4);
+	    }
+
+	  // if (map[x][y] == -100)
+	  //   {
+	  //     portail
+	  //   }
 
 	  y++;
 	}
