@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Fri Apr  3 17:12:51 2015 terran_j
+// Last update Fri Apr  3 17:21:29 2015 terran_j
 //
 
 #include <iostream>
@@ -107,7 +107,7 @@ int	SFML::getEvent()
 void	SFML::refreshImg(int **map)
 {
   int x = 0;
-  int y = 0;
+  int y;
 
   // clear
   this->_window->clear(sf::Color::Black);
@@ -118,6 +118,7 @@ void	SFML::refreshImg(int **map)
 
   while (x * SIZE < this->_x)
     {
+      y = 0;
       while (y * SIZE < this->_y)
 	{
 	  if (map[x][y] == 2147483647)
