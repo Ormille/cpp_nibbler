@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Fri Apr  3 11:24:32 2015 moran-_d
+// Last update Fri Apr  3 15:29:01 2015 terran_j
 */
 
 #include <ctime>
@@ -21,7 +21,7 @@ unsigned int strToInt(char *st)
 {
   std::stringstream tmp;
   unsigned int x;
-  
+
   tmp << st;
   tmp >> x;
   return (x);
@@ -67,7 +67,8 @@ int	main(int argc, char **argv)
     std::cout << "Invalid map width" << std::endl;
   if ((y = strToInt(argv[2])) < 6 || y > 150)
     std::cout << "Invalid map heigth" << std::endl;
-  lib->initLib(x, y);
+  if (lib->initLib(x, y) == -1)
+    return (-1);
   game = load_game(x, y, lib);
   game->process();
   dll.CloseDL();

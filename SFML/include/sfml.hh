@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:57 2015 Julie Terranova
-// Last update Thu Apr  2 20:24:41 2015 terran_j
+// Last update Fri Apr  3 15:29:26 2015 terran_j
 //
 
 #ifndef SFML_HH__
@@ -15,6 +15,8 @@
 #include <SFML/Graphics.hpp>
 #include "IObjGraph.hpp"
 
+#define SIZE 15
+
 class SFML : public IObjGraph
 {
 public:
@@ -22,7 +24,7 @@ public:
   ~SFML();
 
 private:
-  void initLib(unsigned int x, unsigned int y);
+  int initLib(unsigned int x, unsigned int y);
   int getEvent();
   void refreshImg(int **map);
   void affText(const std::string &toAff);
@@ -32,6 +34,11 @@ private:
   int _x;
   int _y;
   sf::Sprite _background;
+  sf::Sprite _bords;
+  sf::Sprite _snake;
+  sf::Sprite _tete;
+  sf::Sprite _queue;
+  sf::Sprite _fruit1;
 };
 
 #endif

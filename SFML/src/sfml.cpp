@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Thu Apr  2 20:35:26 2015 terran_j
+// Last update Fri Apr  3 15:31:39 2015 terran_j
 //
 
 #include <iostream>
@@ -17,11 +17,17 @@ SFML::SFML()
 SFML::~SFML()
 {}
 
-void	SFML::initLib(unsigned int x, unsigned int y)
+int	SFML::initLib(unsigned int x, unsigned int y)
 {
   sf::RenderWindow *n;
 
-  n = new sf::RenderWindow(sf::VideoMode(x, y), "Nibbler SFML",
+  if (x * SIZE > 1800 || y * SIZE > 1000)
+    {
+      std::cerr << "Too hight parameters, try again." << std::endl;
+      return (-1);
+    }
+
+  n = new sf::RenderWindow(sf::VideoMode(x * SIZE, y * SIZE), "Nibbler SFML",
 			   sf::Style::Titlebar | sf::Style::Close);
   this->_window = n;
   this->_x = x;
@@ -31,12 +37,36 @@ void	SFML::initLib(unsigned int x, unsigned int y)
   sf::Texture *texture = new sf::Texture();
 
   if (!texture->loadFromFile("SFML/textures/background.png"))
-    {
-      std::cerr << "Texture file doesn't exist." << std::endl;
-      return;
-    }
-  sf::Sprite sprite(*texture);
-  this->_background = sprite;
+    return (-1);
+  sf::Sprite background(*texture);
+  this->_background = background;
+
+  // if (!texture->loadFromFile("SFML/textures/bords.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  //   return;
+  // sf::Sprite bords(*texture);
+  // this->_bords = bords;
+
+  // if (!texture->loadFromFile("SFML/textures/snake.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  //   return;
+  // sf::Sprite snake(*texture);
+  // this->_snake = snake;
+
+  // if (!texture->loadFromFile("SFML/textures/tete.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  //   return;
+  // sf::Sprite tete(*texture);
+  // this->_tete = tete;
+
+  // if (!texture->loadFromFile("SFML/textures/queue.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  //   return;
+  // sf::Sprite queue(*texture);
+  // this->_queue = queue;
+
+  // if (!texture->loadFromFile("SFML/textures/fruit1.png", sf::IntRect(0, 0, SIZE, SIZE)))
+  //   return;
+  // sf::Sprite fruit1(*texture);
+  // this->_fruit1 = fruit1;
+
+  return (0);
 }
 
 int	SFML::getEvent()
