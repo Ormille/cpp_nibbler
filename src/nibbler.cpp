@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 17:34:40 2015 moran-_d
+// Last update Fri Apr  3 18:10:30 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -13,7 +13,7 @@
 #include <chrono>
 #include <iostream>
 #include "nibbler.hh"
-#include "Fruit.hh"
+#include "BigFruit.hh"
 
 Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
 {
@@ -52,6 +52,7 @@ int Nibbler::process()
 	  loop = this->applyEvent(key);
 	}
       this->process_snake(this->ticked);
+      this->process_items();
       this->lib->refreshImg(this->map->getMap());
     }
   lib->closeLib();
@@ -64,10 +65,17 @@ int Nibbler::process()
 ** *************************************************
 */
 
+void Nibbler::process_items()
+{
+  for (auto it = this->items->begin(); it != this->items->end(); ++it)
+    ((*it).second)->turn(this->map);
+}
+
 void Nibbler::buildItems()
 {
   (*(this->items))[-1] = new Fruit();
   (*(this->items))[-1]->pop(this->map);
+  (*(this->items))[-2] = new BigFruit();
 }
 
 /* 

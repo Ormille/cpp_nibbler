@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Fri Apr  3 17:16:01 2015 moran-_d
+## Last update Fri Apr  3 18:17:20 2015 moran-_d
 ##
 
 NAME_EXE =	nibbler
@@ -14,6 +14,7 @@ SRC_EXE =	src/main.cpp \
 		src/nibbler.cpp \
 		src/Snake.cpp \
 		src/Map.cpp \
+		src/BigFruit.cpp \
 		src/Fruit.cpp
 OBJ_EXE =	$(SRC_EXE:.cpp=.o)
 

@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:27:29 2015 moran-_d
-// Last update Fri Apr  3 15:05:09 2015 moran-_d
+// Last update Fri Apr  3 17:56:32 2015 moran-_d
 //
 
 #ifndef FRUIT_H_
@@ -14,7 +14,7 @@
 #include "Item.hh"
 
 class Fruit : public Item {
-private:
+protected:
   int pos[2];
 
 public:
@@ -22,9 +22,9 @@ public:
   ~Fruit();
   
 public:
-  int pop(Map *);
-  void turn(Map *);
-  void use(Map *, Snake *);
+  virtual int pop(Map *);
+  virtual void turn(Map *);
+  virtual void use(Map *, Snake *);
 };
 
 #endif
