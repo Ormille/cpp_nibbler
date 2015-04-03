@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 12:33:03 2015 moran-_d
+// Last update Fri Apr  3 14:11:15 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -21,10 +21,90 @@ Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
   this->items = new std::map<int, Item*>();
   this->lib = lib;
   this->paused = false;
+  this->buildEvents();
 }
 
 Nibbler::~Nibbler()
 {}
+
+/* 
+** *************************************************
+** PROCESS *****************************************
+** *************************************************
+*/
+
+int Nibbler::process()
+{
+  bool loop = true;
+  int key = 0;
+
+  if (this->popSnake(this->map->getX() / 2, this->map->getY() / 2, 0xFF00FF) < 0)
+    return (-1);
+  this->map->printMap();
+  this->ticked = std::chrono::system_clock::now();
+  while (loop)
+    {
+      while (loop == true && (key = this->lib->getEvent()) >= 0)
+	{
+	  std::cout << "Key received : " << key << std::endl;
+	  loop = this->applyEvent(key);
+	}
+      this->process_snake(this->ticked);
+      this->lib->refreshImg(this->map->getMap());
+    }
+  lib->closeLib();
+  return (0);
+}
+
+/* 
+** *************************************************
+** EVENTS ******************************************
+** *************************************************
+*/
+
+bool Nibbler::applyEvent(int key)
+{
+  if (key == 27)
+    return eventQuit();
+  else if (this->events.find(key) != this->events.end())
+    (this->* this->events[key])();
+  for (std::list<Snake*>::iterator it = this->snakes.begin(); it != this->snakes.end(); ++it)
+    (*it)->tryDirKey(key);
+  return true;
+}
+
+void Nibbler::buildEvents()
+{
+  this->events[8] = &Nibbler::eventPopSnake;
+  this->events[32] = &Nibbler::eventPause;
+}
+
+bool Nibbler::eventQuit()
+{
+  return false;
+}
+
+bool Nibbler::eventPopSnake()
+{
+  bool t = this->paused;
+
+  this->paused = false;
+  this->popNewSnake();
+  this->paused = t;
+  return true;
+}
+
+bool Nibbler::eventPause()
+{
+  this->paused = !this->paused;
+  return true;
+}
+
+/* 
+** *************************************************
+** PROCESS SNAKE ***********************************
+** *************************************************
+*/
 
 int Nibbler::popSnake(unsigned int x, unsigned int y, int color)
 {
@@ -54,7 +134,6 @@ void Nibbler::popNewSnake()
 	  this->map->getCell(obj[0] - 2, obj[1]) == 0)
 	{
 	  ok = true;
-	  this->paused = true;
 	  this->popSnake(obj[0], obj[1], 0x00FF00);
 	  tries = -1;
 	  while (tries < 0)
@@ -64,7 +143,6 @@ void Nibbler::popNewSnake()
 	  while (tries < 0)
 	    tries = this->lib->getEvent();
 	  this->snakes.front()->setRight(tries);
-	  this->paused = false;
 	}
       ++tries;
     }
@@ -75,19 +153,6 @@ void Nibbler::reset_snake() const
 {
   for (std::list<Snake*>::const_iterator it = this->snakes.begin(); it != this->snakes.end(); ++it)
     it = it;
-}
-
-bool Nibbler::applyEvent(int key)
-{
-  if (key == 27)
-    return false;
-  else if (key == 8)
-    this->popNewSnake();
-  else if (key == 32)
-    this->paused = !this->paused;
-  for (std::list<Snake*>::iterator it = this->snakes.begin(); it != this->snakes.end(); ++it)
-    (*it)->tryDirKey(key);
-  return true;
 }
 
 void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
@@ -120,25 +185,3 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
   last = cur;
 }
 
-int Nibbler::process()
-{
-  bool loop = true;
-  int key = 0;
-
-  if (this->popSnake(this->map->getX() / 2, this->map->getY() / 2, 0xFF00FF) < 0)
-    return (-1);
-  this->map->printMap();
-  this->ticked = std::chrono::system_clock::now();
-  while (loop)
-    {
-      while (loop == true && (key = this->lib->getEvent()) >= 0)
-	{
-	  std::cout << "Key received : " << key << std::endl;
-	  loop = this->applyEvent(key);
-	}
-      this->process_snake(this->ticked);
-      this->lib->refreshImg(this->map->getMap());
-    }
-  lib->closeLib();
-  return (0);
-}
