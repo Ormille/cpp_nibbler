@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 15:51:46 2015 moran-_d
+// Last update Fri Apr  3 16:22:21 2015 moran-_d
 //
 
 #include <iostream>
@@ -97,13 +97,13 @@ void Snake::_enlarge(int part)
   std::array<unsigned int, 2> tmp;
   unsigned int obj[2];
 
+  part = part;
   tmp[0] = (obj[0] = this->pos.back()[0]);
   tmp[1] = (obj[1] = this->pos.back()[1]);
   std::cout << "HERE ENTRY WITH x = " << tmp[0] << " y = " << tmp[1] << std::endl;
   this->map->setCell(obj[0], obj[1], 2);
   if (this->getNextCell(obj, (this->direction + 1) % 4) == 0)
     {
-      this->map->setCell(obj[0], obj[1], part);
       this->pos.push_back(tmp);
       return;
     }
@@ -111,7 +111,6 @@ void Snake::_enlarge(int part)
   tmp[1] = (obj[1] = this->pos.back()[1]);
   if (this->getNextCell(obj, (this->direction + 2) % 4) == 0)
     {
-      this->map->setCell(obj[0], obj[1], part);
       this->pos.push_back(tmp);
       return;
     }
@@ -119,7 +118,6 @@ void Snake::_enlarge(int part)
   tmp[1] = (obj[1] = this->pos.back()[1]);
   if (this->getNextCell(obj, (this->direction + 3) % 4) == 0)
     {
-      this->map->setCell(obj[0], obj[1], part);  
       this->pos.push_back(tmp);
       return;
     }

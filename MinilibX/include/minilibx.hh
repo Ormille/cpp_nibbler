@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 16:59:35 2015 Julie Terranova
-// Last update Wed Apr  1 18:26:17 2015 terran_j
+// Last update Fri Apr  3 15:38:32 2015 le-gue_n
 //
 
 #ifndef MINILIBX_HH__
@@ -19,7 +19,7 @@ public:
   ~Minilibx();
 
 private:
-  void initLib(unsigned int x, unsigned int y);
+  int initLib(unsigned int x, unsigned int y);
   int getEvent();
   void refreshImg(int **map);
   void affText(const std::string &toAff);
