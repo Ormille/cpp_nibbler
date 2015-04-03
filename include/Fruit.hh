@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:27:29 2015 moran-_d
-// Last update Wed Apr  1 10:12:42 2015 moran-_d
+// Last update Fri Apr  3 15:05:09 2015 moran-_d
 //
 
 #ifndef FRUIT_H_
@@ -16,11 +16,15 @@
 class Fruit : public Item {
 private:
   int pos[2];
+
+public:
+  Fruit();
+  ~Fruit();
   
 public:
   int pop(Map *);
   void turn(Map *);
-  void use(Snake *);
+  void use(Map *, Snake *);
 };
 
 #endif

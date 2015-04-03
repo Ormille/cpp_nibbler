@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 12:44:42 2015 moran-_d
+// Last update Fri Apr  3 15:51:46 2015 moran-_d
 //
 
 #include <iostream>
@@ -47,11 +47,8 @@ Snake::~Snake()
     this->map->setCell((*it)[0], (*it)[1], 0);
 }
 
-int Snake::getNextCell(unsigned int *objective) const
+int Snake::getNextCell(unsigned int *objective, int direction) const
 {
-  int direction;
-
-  direction = this->direction;
   objective[0] = this->pos[0][0];
   objective[1] = this->pos[0][1];
   if (direction == 0 || direction == 2)
@@ -95,6 +92,47 @@ int Snake::tryDirKey(int key)
   return (-1);
 }
 
+void Snake::_enlarge(int part)
+{
+  std::array<unsigned int, 2> tmp;
+  unsigned int obj[2];
+
+  tmp[0] = (obj[0] = this->pos.back()[0]);
+  tmp[1] = (obj[1] = this->pos.back()[1]);
+  std::cout << "HERE ENTRY WITH x = " << tmp[0] << " y = " << tmp[1] << std::endl;
+  this->map->setCell(obj[0], obj[1], 2);
+  if (this->getNextCell(obj, (this->direction + 1) % 4) == 0)
+    {
+      this->map->setCell(obj[0], obj[1], part);
+      this->pos.push_back(tmp);
+      return;
+    }
+  tmp[0] = (obj[0] = this->pos.back()[0]);
+  tmp[1] = (obj[1] = this->pos.back()[1]);
+  if (this->getNextCell(obj, (this->direction + 2) % 4) == 0)
+    {
+      this->map->setCell(obj[0], obj[1], part);
+      this->pos.push_back(tmp);
+      return;
+    }
+  tmp[0] = (obj[0] = this->pos.back()[0]);
+  tmp[1] = (obj[1] = this->pos.back()[1]);
+  if (this->getNextCell(obj, (this->direction + 3) % 4) == 0)
+    {
+      this->map->setCell(obj[0], obj[1], part);  
+      this->pos.push_back(tmp);
+      return;
+    }
+  this->alive = false;
+}
+
+void Snake::enlarge(int e)
+{
+  while (--e > 0)
+    this->_enlarge(2);
+  this->_enlarge(3);
+}
+
 void Snake::reduce_tail()
 {
   this->map->setCell(this->pos.back()[0], this->pos.back()[1], 0);
@@ -107,7 +145,7 @@ int Snake::advance()
   unsigned int objective[2];
   int content;
 
-  if ((content = this->getNextCell(objective)) > 0)
+  if ((content = this->getNextCell(objective, this->direction)) > 0)
     {
       std::cout << "FOUND OBSTACLE AHEAD OF SNAKE, VALUE = " << content << std::endl;
       return (this->harakiri());
@@ -115,7 +153,7 @@ int Snake::advance()
   this->reduce_tail();
   if (content < 0)
     {
-      (*(this->items))[content]->use(this);
+      (*(this->items))[content]->use(this->map, this);
       if (this->alive == false)
 	return (this->harakiri());
     }
