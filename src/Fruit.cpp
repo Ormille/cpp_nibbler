@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 14:16:59 2015 moran-_d
-// Last update Fri Apr  3 16:22:24 2015 moran-_d
+// Last update Fri Apr  3 16:27:29 2015 moran-_d
 //
 
 #include <iostream>
@@ -42,7 +42,7 @@ void Fruit::turn(Map *map)
 
 void Fruit::use(Map *map, Snake *snake)
 {
-  snake->enlarge(2);
+  snake->enlarge(1);
   this->exist = false;
   map->setCell(this->pos[0], this->pos[1], 0);
   this->pop(map);
