@@ -11,9 +11,7 @@
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-//#include <cstdlib>
 #include <iostream>
-
 #include "Grid.hh"
 #include "Cube.hh"
 

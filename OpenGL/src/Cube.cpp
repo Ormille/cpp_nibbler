@@ -1,5 +1,12 @@
-
-//#include <iostream>
+//
+// Cube.cpp for  in /home/le-gue_n/Documents/tek2/cpp_nibbler/OpenGL/src
+//
+// Made by le-gue_n
+// Login   <le-gue_n@epitech.net>
+//
+// Started on  Fri Apr  3 15:54:26 2015 le-gue_n
+// Last update Fri Apr  3 15:54:27 2015 le-gue_n
+//
 
 #include <GL/gl.h>
 #include "Cube.hh"
@@ -60,7 +67,7 @@ void	Cube::drawCube(int x, int y, std::tuple<int, int, int> rgb)
 void	Cube::drawSnake(int x, int y, int nb)
 {
   std::tuple<int, int, int> rgb;
-
+  
   if (nb == 1) // tete
     rgb = std::make_tuple(133, 75, 25);//(19, 138, 41);
   else
@@ -93,13 +100,13 @@ void	Cube::drawMapItems(int **map)
       while (x < this->mapH + 2)
         {
           if (map[y][x] < 0)
-            this->drawOther(x, y, map[y][x]);
+            this->drawOther(y, x, map[y][x]);
           else
             if (map[y][x] > 3)
-              this->drawCube(x, y, rgb);
+              this->drawCube(y, x, rgb);
             else
               if (map[y][x] > 0)
-                this->drawSnake(x, y, map[y][x]);
+                this->drawSnake(y, x, map[y][x]);
           x++;
         }
       y++;
