@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Fri Apr  3 18:17:20 2015 moran-_d
+## Last update Fri Apr  3 19:48:45 2015 le-gue_n
 ##
 
 NAME_EXE =	nibbler
@@ -28,14 +28,14 @@ SRC_LIB2 =	OpenGL/src/opengl.cpp \
 		OpenGL/src/Cube.cpp
 OBJ_LIB2 =	$(SRC_LIB2:.cpp=.o)
 
-NAME_LIB3 =	lib_nibbler_minilibx.so
-SRC_LIB3 =	MinilibX/src/minilibx.cpp
+NAME_LIB3 =	lib_nibbler_ncurses.so
+SRC_LIB3 =	nCurses/src/nCurses.cpp
 OBJ_LIB3 =	$(SRC_LIB3:.cpp=.o)
 
 CXX  =		g++
-CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./MinilibX/include -std=gnu++11 -g
+CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./nCurses/include -std=gnu++11 -g
 
-LDFLAGS =	-ldl -rdynamic -lGL -lGLU -lSDL -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS =	-ldl -rdynamic -lGL -lGLU -lSDL -lsfml-graphics -lsfml-window -lsfml-system -lncurses
 
 make:	all
 
@@ -49,7 +49,7 @@ $(NAME_LIB2):$(OBJ_LIB2)
 	$(CXX) -shared -o $(NAME_LIB2) $(OBJ_LIB2) -lGL -lGLU -lSDL
 
 $(NAME_LIB3):$(OBJ_LIB3)
-	$(CXX) -shared -o $(NAME_LIB3) $(OBJ_LIB3)
+	$(CXX) -shared -o $(NAME_LIB3) $(OBJ_LIB3) -lncurses
 
 all:    $(NAME_EXE) $(NAME_LIB1) $(NAME_LIB2) $(NAME_LIB3)
 

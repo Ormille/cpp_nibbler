@@ -8,15 +8,17 @@
 // Last update Fri Apr  3 15:38:32 2015 le-gue_n
 //
 
-#ifndef MINILIBX_HH__
-# define MINILIBX_HH__
+#ifndef NCURSES_HH__
+# define NCURSES_HH__
 
+#include <ncurses.h>
 #include "IObjGraph.hpp"
 
-class Minilibx : public IObjGraph {
+class nCurses: public IObjGraph 
+{
 public:
-  Minilibx();
-  ~Minilibx();
+  nCurses();
+  ~nCurses();
 
 private:
   int initLib(unsigned int x, unsigned int y);
@@ -25,8 +27,9 @@ private:
   void affText(const std::string &toAff);
   void closeLib();
 
-  int _x;
-  int _y;
+  int		_x;
+  int		_y;
+  WINDOW	*_win;
 };
 
 #endif
