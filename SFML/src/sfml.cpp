@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Fri Apr  3 15:31:39 2015 terran_j
+// Last update Fri Apr  3 17:21:29 2015 terran_j
 //
 
 #include <iostream>
@@ -34,35 +34,39 @@ int	SFML::initLib(unsigned int x, unsigned int y)
   this->_y = y;
 
   // load des textures:
-  sf::Texture *texture = new sf::Texture();
-
-  if (!texture->loadFromFile("SFML/textures/background.png"))
+  sf::Texture *texture1 = new sf::Texture();
+  if (!texture1->loadFromFile("SFML/textures/background.png"))
     return (-1);
-  sf::Sprite background(*texture);
+  sf::Sprite background(*texture1);
   this->_background = background;
 
-  // if (!texture->loadFromFile("SFML/textures/bords.png", sf::IntRect(0, 0, SIZE, SIZE)))
-  //   return;
-  // sf::Sprite bords(*texture);
-  // this->_bords = bords;
+  sf::Texture *texture2 = new sf::Texture();
+  if (!texture2->loadFromFile("SFML/textures/bords.png"))
+    return (-1);
+  sf::Sprite bords(*texture2);
+  this->_bords = bords;
 
+  // sf::Texture *texture = new sf::Texture();
   // if (!texture->loadFromFile("SFML/textures/snake.png", sf::IntRect(0, 0, SIZE, SIZE)))
-  //   return;
+  //   return (-1);
   // sf::Sprite snake(*texture);
   // this->_snake = snake;
 
+  // sf::Texture *texture = new sf::Texture();
   // if (!texture->loadFromFile("SFML/textures/tete.png", sf::IntRect(0, 0, SIZE, SIZE)))
-  //   return;
+  //   return (-1);
   // sf::Sprite tete(*texture);
   // this->_tete = tete;
 
+  // sf::Texture *texture = new sf::Texture();
   // if (!texture->loadFromFile("SFML/textures/queue.png", sf::IntRect(0, 0, SIZE, SIZE)))
-  //   return;
+  //   return (-1);
   // sf::Sprite queue(*texture);
   // this->_queue = queue;
 
+  // sf::Texture *texture = new sf::Texture();
   // if (!texture->loadFromFile("SFML/textures/fruit1.png", sf::IntRect(0, 0, SIZE, SIZE)))
-  //   return;
+  //   return (-1);
   // sf::Sprite fruit1(*texture);
   // this->_fruit1 = fruit1;
 
@@ -102,7 +106,8 @@ int	SFML::getEvent()
 
 void	SFML::refreshImg(int **map)
 {
-  map = map; // atej
+  int x = 0;
+  int y;
 
   // clear
   this->_window->clear(sf::Color::Black);
@@ -110,6 +115,26 @@ void	SFML::refreshImg(int **map)
   // draw
   this->_background.setPosition(0, 0);
   this->_window->draw(this->_background);
+
+  while (x * SIZE < this->_x)
+    {
+      y = 0;
+      while (y * SIZE < this->_y)
+	{
+	  if (map[x][y] == 2147483647)
+	    {
+	      this->_bords.setPosition(x * SIZE, y * SIZE);
+	      this->_bords.setScale(1.0f, 1.0f);
+	      this->_bords.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_bords);
+	    }
+
+
+
+	  y++;
+	}
+      x++;
+    }
 
   // display
   this->_window->display();

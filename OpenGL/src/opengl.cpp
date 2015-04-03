@@ -78,7 +78,7 @@ void    OpenGL::affText(const std::string &toAff)
 
 void	OpenGL::closeLib()
 {
-
+  SDL_Quit();
 }
 
 extern "C"

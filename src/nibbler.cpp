@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 18:10:30 2015 moran-_d
+// Last update Fri Apr  3 18:17:51 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -78,7 +78,7 @@ void Nibbler::buildItems()
   (*(this->items))[-2] = new BigFruit();
 }
 
-/* 
+/*
 ** *************************************************
 ** EVENTS ******************************************
 ** *************************************************
@@ -200,7 +200,7 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
 			    (SNAKE_WAIT * (*it)->getSpeedModifier()));
 	  if (this->paused == false && (*it)->advance() == -1)
 	    this->snakes.erase(it);
-	  //  this->map->printMap();
+	  this->map->printMap();
 	}
       it = next;
     }
