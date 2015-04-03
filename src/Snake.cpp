@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 16:22:21 2015 moran-_d
+// Last update Fri Apr  3 17:41:35 2015 moran-_d
 //
 
 #include <iostream>
@@ -20,7 +20,7 @@ Snake::Snake(std::map<int, Item*> *items, Map *map,
   this->alive = true;
   this->counter = std::chrono::milliseconds::zero();
   this->moved = false;
-  this->speed_modifier = 0.3;
+  this->speed_modifier = 1;
   this->direction = 0;
   this->pos.push_front({x + 1, y});
   this->pos.push_front({x, y});

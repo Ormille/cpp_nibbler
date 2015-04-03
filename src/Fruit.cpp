@@ -5,10 +5,9 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 14:16:59 2015 moran-_d
-// Last update Fri Apr  3 16:27:29 2015 moran-_d
+// Last update Fri Apr  3 17:59:39 2015 moran-_d
 //
 
-#include <iostream>
 #include "Fruit.hh"
 
 Fruit::Fruit()
@@ -26,7 +25,6 @@ int Fruit::pop(Map *map)
     return (-1);
   if (map->fillRandomEmptyCellWith(this->id, obj) < 0)
     return (-1);
-  map->printMap();
   this->exist = true;
   this->span = 0;
   this->pos[0] = obj[0];

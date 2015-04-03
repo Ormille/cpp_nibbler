@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:37:22 2015 Julie Terranova
-// Last update Fri Apr  3 15:09:53 2015 moran-_d
+// Last update Fri Apr  3 18:02:13 2015 moran-_d
 */
 
 #ifndef NIBBLER_HH_
@@ -44,6 +44,7 @@ public:
   int process();
 
 private:
+  void process_items();
   void buildItems();
 
 public:
