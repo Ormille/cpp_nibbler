@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Fri Apr  3 15:29:01 2015 terran_j
+// Last update Fri Apr  3 16:12:40 2015 moran-_d
 */
 
 #include <ctime>
@@ -63,9 +63,9 @@ int	main(int argc, char **argv)
   srandom(time(NULL));
   if ((lib = load_lib(argv[3], dll)) == NULL)
     return (-1);
-  if ((x = strToInt(argv[1])) < 6 || x > 150)
+  if ((x = strToInt(argv[1])) < 10 || x > 100)
     std::cout << "Invalid map width" << std::endl;
-  if ((y = strToInt(argv[2])) < 6 || y > 150)
+  if ((y = strToInt(argv[2])) < 10 || y > 100)
     std::cout << "Invalid map heigth" << std::endl;
   if (lib->initLib(x, y) == -1)
     return (-1);

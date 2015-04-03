@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Fri Apr  3 11:19:58 2015 moran-_d
+// Last update Fri Apr  3 15:03:03 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
@@ -51,10 +51,14 @@ public:
   ~Snake();
 
 private:
-  int getNextCell(unsigned int *objective) const;
+  int getNextCell(unsigned int *objective, int direction) const;
   void back();
 
+private:
+  void _enlarge(int part);
+
 public:
+  void enlarge(int nb);
   void reduce_tail();
   int harakiri();
   int tryDirKey(int key);

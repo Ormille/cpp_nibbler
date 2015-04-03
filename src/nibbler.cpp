@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 16:07:28 2015 terran_j
+// Last update Fri Apr  3 17:18:43 2015 terran_j
 //
 
 #include <cstdlib>
@@ -13,6 +13,7 @@
 #include <chrono>
 #include <iostream>
 #include "nibbler.hh"
+#include "Fruit.hh"
 
 Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
 {
@@ -22,6 +23,7 @@ Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
   this->lib = lib;
   this->paused = false;
   this->buildEvents();
+  this->buildItems();
 }
 
 Nibbler::~Nibbler()
@@ -54,6 +56,18 @@ int Nibbler::process()
     }
   lib->closeLib();
   return (0);
+}
+
+/*
+** *************************************************
+** ITEMS* ******************************************
+** *************************************************
+*/
+
+void Nibbler::buildItems()
+{
+  (*(this->items))[-1] = new Fruit();
+  (*(this->items))[-1]->pop(this->map);
 }
 
 /*
@@ -126,8 +140,8 @@ void Nibbler::popNewSnake()
 
   while (ok == false && tries < 1000)
     {
-      obj[0] = (random() % (this->map->getX() - 3)) + 1;
-      obj[1] = (random() % (this->map->getY() - 3)) + 1;
+      obj[0] = (random() % (this->map->getX() - 4)) + 2;
+      obj[1] = (random() % (this->map->getY() - 4)) + 2;
       if (this->map->getCell(obj[0] + 1, obj[1]) == 0 &&
 	  this->map->getCell(obj[0], obj[1]) == 0 &&
 	  this->map->getCell(obj[0] - 1, obj[1]) == 0 &&

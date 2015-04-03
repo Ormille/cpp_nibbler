@@ -5,9 +5,10 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:46:57 2015 moran-_d
-// Last update Thu Apr  2 16:35:56 2015 moran-_d
+// Last update Fri Apr  3 15:01:55 2015 moran-_d
 //
 
+#include <cstdlib>
 #include <iostream>
 #include "Map.hh"
 
@@ -52,6 +53,23 @@ void Map::printMap()
 	std::cout << this->map[i][t] << " ";
       std::cout << std::endl;
     }
+}
+
+int Map::fillRandomEmptyCellWith(int id, int *obj)
+{
+  int tries = 1000000;
+
+  while (--tries > 0)
+    {
+      obj[0] = (random() % (this->x - 2)) + 1;
+      obj[1] = (random() % (this->y - 2)) + 1;
+      if (this->map[obj[0]][obj[1]] == 0)
+	{
+	  this->map[obj[0]][obj[1]] = id;
+	  return (0);
+	}
+    }
+  return (-1);
 }
 
 int Map::setCell(unsigned int x, unsigned int y, int val)
