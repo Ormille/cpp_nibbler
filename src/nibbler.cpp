@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 18:17:51 2015 moran-_d
+// Last update Sat Apr  4 15:53:30 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -14,6 +14,8 @@
 #include <iostream>
 #include "nibbler.hh"
 #include "BigFruit.hh"
+#include "SpeedFruit.hh"
+#include "SlowFruit.hh"
 
 Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
 {
@@ -76,6 +78,8 @@ void Nibbler::buildItems()
   (*(this->items))[-1] = new Fruit();
   (*(this->items))[-1]->pop(this->map);
   (*(this->items))[-2] = new BigFruit();
+  (*(this->items))[-2] = new SpeedFruit();
+  (*(this->items))[-2] = new SlowFruit();
 }
 
 /*

@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Fri Apr  3 17:42:48 2015 moran-_d
+// Last update Sat Apr  4 15:51:15 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
@@ -72,6 +72,7 @@ public:
   std::chrono::milliseconds getCounter() const;
   void setCounter(const std::chrono::milliseconds&);
   double getSpeedModifier() const;
+  void setSpeedModifier(double);
   void setMoved(bool);
 };
 
