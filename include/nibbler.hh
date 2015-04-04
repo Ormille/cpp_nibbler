@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:37:22 2015 Julie Terranova
-// Last update Sat Apr  4 20:01:33 2015 moran-_d
+// Last update Sat Apr  4 22:09:37 2015 moran-_d
 */
 
 #ifndef NIBBLER_HH_
@@ -65,6 +65,7 @@ private:
   int popSnake(unsigned int, unsigned int, int);
   void popNewSnake();
   void reset_snake() const;
+  void remove_snake(std::list<Snake*>::iterator it);
   void process_snake(std::chrono::system_clock::time_point &last);
 };
 

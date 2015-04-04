@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Sat Apr  4 21:15:10 2015 moran-_d
+// Last update Sat Apr  4 22:08:59 2015 moran-_d
 //
 
 #include <iostream>
@@ -192,8 +192,14 @@ double Snake::getSpeedModifier() const
 void Snake::setSpeedModifier(double s)
 { this->speed_modifier = s; }
 
+int Snake::getId() const
+{ return (this->id); }
+
 int Snake::getScore() const
 { return (this->score); }
+
+int Snake::getTurn() const
+{ return (this->turn); }
 
 void Snake::setScore(int s)
 { this->score = s; }
