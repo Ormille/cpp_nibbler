@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Sat Apr  4 21:11:30 2015 moran-_d
+// Last update Sat Apr  4 22:09:07 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
@@ -74,6 +74,8 @@ public:
   void pushPosFront(unsigned int, unsigned int);
   int getScore() const;
   void setScore(int);
+  int getId() const;
+  int getTurn() const;
   int getColor() const;
   void setLeft(int key);
   void setRight(int key);

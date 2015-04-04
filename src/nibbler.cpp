@@ -5,9 +5,10 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 21:09:20 2015 moran-_d
+// Last update Sat Apr  4 22:10:18 2015 moran-_d
 //
 
+#include <sstream>
 #include <cstdlib>
 #include <stdio.h>
 #include <chrono>
@@ -119,8 +120,11 @@ bool Nibbler::eventQuit() const
 
 bool Nibbler::eventPopSnake()
 {
+  std::stringstream st;
   bool t = this->paused;
 
+  st << "A savage snake has appeared !" << (this->snakeCount);
+  this->lib->affText(st.str().c_str());
   this->paused = false;
   this->popNewSnake();
   this->paused = t;
@@ -188,6 +192,16 @@ void Nibbler::reset_snake() const
     it = it;
 }
 
+void Nibbler::remove_snake(std::list<Snake*>::iterator it)
+{
+  std::stringstream st;
+
+  st << "Serpent N°" << (*it)->getId() << " is dead." << std::endl
+     << "\t Score : " << (*it)->getScore() + (*it)->getTurn();
+  this->lib->affText(st.str().c_str());
+  this->snakes.erase(it);
+}
+
 void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
 {
   std::list<Snake*>::iterator it = this->snakes.begin();
@@ -210,7 +224,7 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
 			    std::chrono::duration_cast<std::chrono::milliseconds>
 			    (SNAKE_WAIT * (*it)->getSpeedModifier()));
 	  if (this->paused == false && (*it)->advance() == -1)
-	    this->snakes.erase(it);
+	    this->remove_snake(it);
 	}
       it = next;
     }
