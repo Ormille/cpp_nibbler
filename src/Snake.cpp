@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Sat Apr  4 18:52:43 2015 moran-_d
+// Last update Sat Apr  4 19:06:38 2015 terran_j
 //
 
 #include <iostream>
@@ -56,7 +56,7 @@ int Snake::_getNextCell(unsigned int *objective, int direction) const
       --direction;
       objective[1] += (!!direction) - (!direction);
     }
-  return (this->map->getCell(objective[0], objective[1]));  
+  return (this->map->getCell(objective[0], objective[1]));
 }
 
 int Snake::getNextCell(unsigned int *objective, int direction) const
