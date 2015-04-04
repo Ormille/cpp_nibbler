@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:57 2015 Julie Terranova
-// Last update Sat Apr  4 21:54:05 2015 terran_j
+// Last update Sat Apr  4 22:09:18 2015 terran_j
 //
 
 #ifndef SFML_HH__
@@ -77,6 +77,7 @@ private:
   sf::Sprite _portal;
   sf::Sprite _swimm;
   sf::Music _music;
+  sf::Text _txt;
 };
 
 #endif

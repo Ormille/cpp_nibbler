@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Sat Apr  4 21:56:38 2015 terran_j
+// Last update Sat Apr  4 22:35:38 2015 terran_j
 //
 
 #include <iostream>
@@ -22,6 +22,7 @@ SFML::~SFML()
 int	SFML::initLib(unsigned int x, unsigned int y)
 {
   sf::RenderWindow *n;
+  sf::Font font;
 
   if (x * SIZE > 1800 || y * SIZE > 1000)
     {
@@ -109,6 +110,10 @@ int	SFML::initLib(unsigned int x, unsigned int y)
   texture15->loadFromFile("SFML/textures/portal.png");
   sf::Sprite portal(*texture15);
   this->_portal = portal;
+
+  if (!font.loadFromFile("SFML/textures/arial.ttf"))
+    return (-1);
+  this->_txt.setFont(font);
 
   return (0);
 }
@@ -292,7 +297,11 @@ void SFML::ffruit8(int x, int y)
 
 void	SFML::affText(const std::string &toAff)
 {
-  std::cout << toAff << std::endl; // atej
+  this->_txt.setString(toAff);
+  this->_txt.setCharacterSize(24);
+  this->_txt.setColor(sf::Color::White);
+  this->_window->draw(this->_txt);
+  // this->_window->display();
 }
 
 void    SFML::closeLib()

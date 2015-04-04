@@ -1,9 +1,29 @@
 
 PENSER A VIRER LE -g !!! :o
 
-Ligne de compil: ./nibbler 500 500 `pwd`/lib_nibbler_sfml.so
+Note = -42 pour l'instant, penser a virer les forets de if
 
-Note = -42 pour l'instant, Diego a des else if dans Snake.cpp
+pour chaque classe faire operateur= , constructeur par copie , constructeur par deplacement
+
+mettre des const la ou il faut
+
+faire des tests dans tous les sens
+
+lire sujet pr voir si y'a un fichier auteur
+
+
+
+faire uml
+faire diapo
+
+
+
+
+
+
+
+
+
 
 Idee Bonus :
 
