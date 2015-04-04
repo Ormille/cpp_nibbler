@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 18:13:03 2015 moran-_d
+// Last update Sat Apr  4 18:38:03 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -77,6 +77,7 @@ void Nibbler::process_items()
 
 void Nibbler::buildItems()
 {
+  this->map->fillRandomEmptySquareWith(10);
   (*(this->items))[-1] = new Fruit();
   (*(this->items))[-1]->pop(this->map);
   (*(this->items))[-2] = new BigFruit();

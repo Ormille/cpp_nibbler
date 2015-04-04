@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Sat Apr  4 17:52:02 2015 moran-_d
+// Last update Sat Apr  4 18:52:43 2015 moran-_d
 //
 
 #include <iostream>
@@ -81,13 +81,13 @@ int Snake::tryDirKey(int key)
 {
   if (this->moved == true)
     return (-1);
-  if (key == this->left_key)
+  if (key == this->right_key)
     {
       direction = (direction + 1) % 4;
       this->moved = true;
       return (0);
     }
-  else if (key == this->right_key)
+  else if (key == this->left_key)
     {
       if ((direction = (direction - 1)) < 0)
 	direction = 3;

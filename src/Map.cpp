@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:46:57 2015 moran-_d
-// Last update Sat Apr  4 18:32:14 2015 moran-_d
+// Last update Sat Apr  4 18:47:17 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -53,6 +53,28 @@ void Map::printMap()
 	std::cout << this->map[i][t] << " ";
       std::cout << std::endl;
     }
+}
+
+int Map::fillRandomEmptySquareWith(int id)
+{
+  unsigned int obj[2];
+  int tries = 1000000;
+
+  while (--tries > 0)
+    {
+      obj[0] = (random() % (this->x - 2)) + 1;
+      obj[1] = (random() % (this->y - 2)) + 1;
+      if (this->map[obj[0]][obj[1]] == 0 && this->map[obj[0]+1][obj[1]+1] == 0
+	  && this->map[obj[0]+1][obj[1]] == 0 && this->map[obj[0]][obj[1]+1] == 0)
+	{
+	  this->map[obj[0]][obj[1]] = id;
+	  this->map[obj[0]+1][obj[1]+1] = id;
+	  this->map[obj[0]][obj[1]+1] = id;
+	  this->map[obj[0]+1][obj[1]] = id;
+	  return (0);
+	}
+    }
+  return (-1);  
 }
 
 int Map::fillRandomEmptyCellWith(int id, int *obj)

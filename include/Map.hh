@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:43:56 2015 moran-_d
-// Last update Sat Apr  4 18:32:24 2015 moran-_d
+// Last update Sat Apr  4 18:37:39 2015 moran-_d
 //
 
 #ifndef MAP_HH_
@@ -28,6 +28,7 @@ public:
   int **getMap() const;
   int fillRandomEmptyCellWith(int id, int *obj);
   int fillRandomEmptyCellWith(int id, unsigned int *obj);
+  int fillRandomEmptySquareWith(int id);
   int setCell(unsigned int x, unsigned int y, int val);
   int getCell(unsigned int x, unsigned int y) const;
   int getX() const;
