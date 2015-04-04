@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Fri Apr  3 17:41:35 2015 moran-_d
+// Last update Sat Apr  4 15:49:00 2015 moran-_d
 //
 
 #include <iostream>
@@ -164,6 +164,9 @@ int Snake::advance()
   this->moved = false;
   return (0);
 }
+
+void Snake::setSpeedModifier(double s)
+{ this->speed_modifier = s; }
 
 void Snake::setLeft(int k)
 { this->left_key = k; }
