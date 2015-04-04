@@ -20,13 +20,15 @@ public:
   nCurses();
   ~nCurses();
 
-private:
-  int initLib(unsigned int x, unsigned int y);
-  int getEvent();
-  void refreshImg(int **map);
-  void affText(const std::string &toAff);
-  void closeLib();
+  int	initLib(unsigned int x, unsigned int y);
+  int	getEvent();
+  void	putSnake(int x, int y, int nb);
+  void	putItems(int x, int y, int nb);
+  void	refreshImg(int **map);
+  void	affText(const std::string &toAff);
+  void	closeLib();
 
+private:
   int		_x;
   int		_y;
   WINDOW	*_win;

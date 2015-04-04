@@ -55,13 +55,7 @@ int    OpenGL::getEvent()
       if (event.type == SDL_QUIT)
 	return (27);
       else if (event.type == SDL_KEYDOWN)
-      {
-	/*if (event.key.keysym.sym == 275)
-	  return (276);
-	else if (event.key.keysym.sym == 276)
-	  return (275);*/
 	return (event.key.keysym.sym);
-      }
     }
   return (-1);
 }
