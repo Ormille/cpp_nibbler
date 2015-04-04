@@ -17,6 +17,8 @@
 
 #define winHeight 1920
 #define winWidth 1080
+#define mapMax 100
+#define mapMin 20
 
 class OpenGL : public IObjGraph
 {
