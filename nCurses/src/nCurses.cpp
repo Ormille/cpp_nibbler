@@ -166,7 +166,7 @@ void    nCurses::closeLib()
 {
   wclear(this->_win);
   endwin();
-  std::cout << "You lost" << std::endl;
+  std::cout << "You lose!" << std::endl;
 }
 
 extern "C"
