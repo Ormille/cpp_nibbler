@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Sat Apr  4 18:52:43 2015 moran-_d
+// Last update Sat Apr  4 19:12:35 2015 moran-_d
 //
 
 #include <iostream>
@@ -148,6 +148,7 @@ int Snake::advance()
   unsigned int objective[2];
   int content;
 
+  ++this->turn;
   if ((content = this->getNextCell(objective, this->direction)) > 0)
     {
       std::cout << "FOUND OBSTACLE AHEAD OF SNAKE, VALUE = " << content << std::endl;
