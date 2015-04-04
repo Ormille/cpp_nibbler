@@ -22,18 +22,25 @@ int    nCurses::initLib(unsigned int x, unsigned int y)
 {
   unsigned int xtmp = 0;
   unsigned int ytmp = 0;
-  
+
+  std::cout << "1" << std::endl;
   initscr();
   getmaxyx(stdscr, xtmp, ytmp);
   if (x > xtmp || y > ytmp)
+  {
+    endwin();
     return (-1);
+  }
   cbreak();
+  std::cout << "2" << std::endl;
   noecho();
   curs_set(FALSE);
+  std::cout << "3" << std::endl;
   this->_x = x;
   this->_y = y;
   this->_win = newwin(x, y * 2, 0, 0);
   wtimeout(this->_win, 1);
+  std::cout << "4" << std::endl;
   return (0);
 }
 
@@ -41,7 +48,7 @@ int     nCurses::getEvent()
 {
   int ch = -1;
 
-  if ((ch = wgetch(this->_win)))
+  if ((ch = wgetch(this->_win)) > 0)
     return (ch);
   return (ch);
 }
@@ -72,10 +79,10 @@ void    nCurses::refreshImg(int **map)
   int	y = 0;
 
   wclear(this->_win);
-  while (y < this->_y )
+  while (y < this->_y + 2)
   {
     x = 0;
-    while (x < this->_x)
+    while (x < this->_x + 3)
     {
       if (map[y][x] < 0)
 	this->putItems(x, y, map[y][x]);

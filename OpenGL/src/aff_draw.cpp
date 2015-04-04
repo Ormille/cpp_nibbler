@@ -64,7 +64,7 @@ void	GridInfos::draw(int **map)
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  gluLookAt(-((this->mapHeight / 2) + 5), (this->mapWidth / 2) + 5,
+  gluLookAt(-((this->mapWidth / 2) + 5), (this->mapHeight / 2) + 5,
 	    this->mapWidth > this->mapHeight ? this->mapWidth + 5 : this->mapHeight + 5,
 	    0, 0, 0, 0, 0, 1);
   cube.drawMapItems(map);
