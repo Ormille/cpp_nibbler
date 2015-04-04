@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 22:39:50 2015 moran-_d
+// Last update Sat Apr  4 23:01:57 2015 moran-_d
 //
 
 #include <sstream>
@@ -196,7 +196,7 @@ void Nibbler::remove_snake(std::list<Snake*>::iterator it)
 {
   std::stringstream st;
 
-  st << "Serpent N°" << (*it)->getId() << " is dead." << std::endl
+  st << "Serpent N" << (*it)->getId() << " is dead." << std::endl
      << "\t Score : " << (*it)->getScore() + (*it)->getTurn();
   this->lib->affText(st.str());
   this->snakes.erase(it);
