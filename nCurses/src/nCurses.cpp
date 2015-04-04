@@ -8,10 +8,11 @@
 // Last update Fri Apr  3 15:48:37 2015 terran_j
 //
 
-#include <unistd.h>
-
 #include <iostream>
-#include <stdio.h>
+//#include <stdio.h>
+
+#include <curses.h>
+#include <map>
 #include "nCurses.hh"
 
 nCurses::nCurses()
@@ -46,44 +47,87 @@ int    nCurses::initLib(unsigned int x, unsigned int y)
 int     nCurses::getEvent()
 {
   int ch = -1;
+  std::map<int, int> keys;
 
-  //wrefresh(this->_win);
-  //wclear(this->_win);
+  keys[KEY_LEFT] = 276;
+  keys[KEY_RIGHT] = 275;
+  keys[KEY_UP] = 273;
+  keys[KEY_DOWN] = 274;
+  keys[KEY_BACKSPACE] = 8;
+  keys[27] = 27;
+  keys[static_cast<int>(' ')] = 32;
   ch = wgetch(this->_win);
-  //sleep(2);
-//   mvwprintw( this->_win, 5, 5, "%d", ch);
-  if (ch == KEY_LEFT)
+  for (std::map<int, int>::iterator it = keys.begin(); it != keys.end(); ++it)
   {
-//     mvwprintw( this->_win, 0, 0, "trolololololo %d", ch);
-    return (275);
+    if ((*it).first == ch)
+      return ((*it).second);
   }
-  if (ch == KEY_RIGHT)
-    return (276);
-  return (-1);
+  return (ch);
 }
 
-void	nCurses::putItems(int x, int y, int nb)
+void	nCurses::getTheChar(int nb)
 {
-  x = x;
-  y = y;
-  if (nb == -1)
-    waddch(this->_win, '&');
-  else
-    waddch(this->_win, 'x');
-  waddch(this->_win, ' ');//x, y, '#', 1);
+  std::map<int, char> items;
+
+  items[-1] = 'F';
+  items[-2] = 'f';
+  items[-4] = 'S';
+  items[-5] = 's';
+  items[-100] = 'x';
+  items[1] = '@';
+  items[2] = 'O';
+  items[3] = 'o';
+  for (std::map<int, char>::iterator it = items.begin(); it != items.end(); ++it)
+  {
+    if ((*it).first == nb)
+    {
+      waddch(this->_win, (*it).second);
+      waddch(this->_win, ' ');
+      return;
+    }
+  }
 }
 
-void	nCurses::putSnake(int x, int y, int nb)
+void	nCurses::putItems(int nb)
 {
-  x =x;
-  y=y; // virer
-  if (nb == 1)
-    waddch(this->_win, '@');
-  else if (nb == 2)
-    waddch(this->_win, 'O');
-  else
-    waddch(this->_win, 'o');
-  waddch(this->_win, ' ');//x, y, '#', 1);
+  std::map<int, char> items;
+
+  items[-1] = 'F';
+  items[-2] = 'f';
+  items[-4] = 'S';
+  items[-5] = 's';
+  items[-100] = 'x';
+  items[10] = '~';
+  for (std::map<int, char>::iterator it = items.begin(); it != items.end(); ++it)
+  {
+    if ((*it).first == nb)
+    {
+      waddch(this->_win, (*it).second);
+      if ((*it).first != 10)
+	waddch(this->_win, ' ');
+      else
+	waddch(this->_win, '~');
+      return;
+    }
+  }
+}
+
+void	nCurses::putSnake(int nb)
+{
+  std::map<int, char> items;
+
+  items[1] = '@';
+  items[2] = 'O';
+  items[3] = 'o';
+  for (std::map<int, char>::iterator it = items.begin(); it != items.end(); ++it)
+  {
+    if ((*it).first == nb)
+    {
+      waddch(this->_win, (*it).second);
+      waddch(this->_win, ' ');
+      return;
+    }
+  }
 }
 
 void    nCurses::refreshImg(int **map)
@@ -97,26 +141,26 @@ void    nCurses::refreshImg(int **map)
   {
     x = 0;
     while (x < this->_x + 2)
-    {
-      if (map[x][y] < 0)
-	this->putItems(x, y, map[x][y]);
-      else if (map[x][y] > 0 && map[x][y] <= 3)
-	this->putSnake(x, y, map[x][y]);
-      else if (map[x][y] == 2147483647)
       {
-	waddch(this->_win, '#');//x, y, '#', 1);
-	if ((y == 0 || y == this->_y + 1) && (x != 0 && x != this->_x))
-	  waddch(this->_win, '#');//x, y, '#', 1);
+	if (map[x][y] < 0 || map[x][y] == 10)
+	  this->putItems(map[x][y]);
+	else if (map[x][y] > 0 && map[x][y] <= 3)
+	  this->putSnake(map[x][y]);
+	else if (map[x][y] == 2147483647)
+	  {
+	    waddch(this->_win, '#');
+	    if ((y == 0 || y == this->_y + 1) && (x != 0 && x != this->_x))
+	      waddch(this->_win, '#');
+	  }
+	else
+	  {
+	    waddch(this->_win, ' ');
+	    waddch(this->_win, ' ');
+	  }
+	  x++;
       }
-      else
-      {
-	waddch(this->_win, ' ');//x, y, '#', 1);
-	waddch(this->_win, ' ');//x, y, '#', 1);
-      }
-      x++;
-    }
-	waddch(this->_win, '\n');//x, y, '#', 1);
-   y++; 
+    waddch(this->_win, '\n');
+    y++; 
   }
   wrefresh(this->_win);
 }

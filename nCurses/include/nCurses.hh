@@ -22,8 +22,9 @@ public:
 
   int	initLib(unsigned int x, unsigned int y);
   int	getEvent();
-  void	putSnake(int x, int y, int nb);
-  void	putItems(int x, int y, int nb);
+  void	getTheChar(int nb);
+  void	putSnake(int nb);
+  void	putItems(int nb);
   void	refreshImg(int **map);
   void	affText(const std::string &toAff);
   void	closeLib();
