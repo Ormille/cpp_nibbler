@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Fri Apr  3 18:44:32 2015 terran_j
+// Last update Sat Apr  4 19:04:16 2015 terran_j
 //
 
 #include <iostream>
@@ -27,13 +27,18 @@ int	SFML::initLib(unsigned int x, unsigned int y)
       return (-1);
     }
 
-  n = new sf::RenderWindow(sf::VideoMode((2 + x) * SIZE, (2 + y) * SIZE), "Nibbler SFML",
+  n = new sf::RenderWindow(sf::VideoMode((2 + x) * SIZE, (2 + y) * SIZE),
+			   "Nibbler SFML",
 			   sf::Style::Titlebar | sf::Style::Close);
+
+  if (!this->_music.openFromFile("SFML/textures/music.ogg"))
+    return (-1);
+  this->_music.play();
+
   this->_window = n;
   this->_x = x;
   this->_y = y;
 
-  // load des textures:
   sf::Texture *texture1 = new sf::Texture();
   if (!texture1->loadFromFile("SFML/textures/background.png"))
     return (-1);
@@ -88,11 +93,41 @@ int	SFML::initLib(unsigned int x, unsigned int y)
   sf::Sprite fruit4(*texture9);
   this->_fruit4 = fruit4;
 
-  // sf::Texture *portal = new sf::Texture();
-  // if (!portal->loadFromFile("SFML/textures/portal.png"))
-  //   return (-1);
-  // sf::Sprite portal(*portal);
-  // this->_portal = portal;
+  sf::Texture *texture10 = new sf::Texture();
+  if (!texture10->loadFromFile("SFML/textures/fruit5.png"))
+    return (-1);
+  sf::Sprite fruit5(*texture10);
+  this->_fruit5 = fruit5;
+
+  sf::Texture *texture11 = new sf::Texture();
+  if (!texture11->loadFromFile("SFML/textures/fruit6.png"))
+    return (-1);
+  sf::Sprite fruit6(*texture11);
+  this->_fruit6 = fruit6;
+
+  sf::Texture *texture12 = new sf::Texture();
+  if (!texture12->loadFromFile("SFML/textures/fruit7.png"))
+    return (-1);
+  sf::Sprite fruit7(*texture12);
+  this->_fruit7 = fruit7;
+
+  sf::Texture *texture13 = new sf::Texture();
+  if (!texture13->loadFromFile("SFML/textures/fruit8.png"))
+    return (-1);
+  sf::Sprite fruit8(*texture13);
+  this->_fruit8 = fruit8;
+
+  sf::Texture *texture14 = new sf::Texture();
+  if (!texture14->loadFromFile("SFML/textures/swimm.png"))
+    return (-1);
+  sf::Sprite swimm(*texture14);
+  this->_swimm = swimm;
+
+  sf::Texture *texture15 = new sf::Texture();
+  if (!texture15->loadFromFile("SFML/textures/portal.png"))
+    return (-1);
+  sf::Sprite portal(*texture15);
+  this->_portal = portal;
 
   return (0);
 }
@@ -199,11 +234,48 @@ void	SFML::refreshImg(int **map)
 	      this->_fruit4.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
 	      this->_window->draw(this->_fruit4);
 	    }
-
-	  // if (map[x][y] == -100)
-	  //   {
-	  //     portail
-	  //   }
+	  if (map[x][y] == -5)
+	    {
+	      this->_fruit5.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit5.setScale(1.0f, 1.0f);
+	      this->_fruit5.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit5);
+	    }
+	  if (map[x][y] == -6)
+	    {
+	      this->_fruit6.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit6.setScale(1.0f, 1.0f);
+	      this->_fruit6.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit6);
+	    }
+	  if (map[x][y] == -7)
+	    {
+	      this->_fruit7.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit7.setScale(1.0f, 1.0f);
+	      this->_fruit7.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit7);
+	    }
+	  if (map[x][y] == -8)
+	    {
+	      this->_fruit8.setPosition(x * SIZE, y * SIZE);
+	      this->_fruit8.setScale(1.0f, 1.0f);
+	      this->_fruit8.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_fruit8);
+	    }
+	  if (map[x][y] == 10)
+	    {
+	      this->_swimm.setPosition(x * SIZE, y * SIZE);
+	      this->_swimm.setScale(1.0f, 1.0f);
+	      this->_swimm.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_swimm);
+	    }
+	  if (map[x][y] == -100)
+	    {
+	      this->_portal.setPosition(x * SIZE, y * SIZE);
+	      this->_portal.setScale(1.0f, 1.0f);
+	      this->_portal.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+	      this->_window->draw(this->_portal);
+	    }
 
 	  y++;
 	}
@@ -223,6 +295,8 @@ void    SFML::closeLib()
   this->_window->close();
   // clean textures en mémoire:
   //  delete(this->_background);
+
+  this->_music.stop();
 }
 
 extern "C"

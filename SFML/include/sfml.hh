@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:57 2015 Julie Terranova
-// Last update Fri Apr  3 18:08:25 2015 terran_j
+// Last update Sat Apr  4 18:53:31 2015 terran_j
 //
 
 #ifndef SFML_HH__
@@ -13,6 +13,7 @@
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "IObjGraph.hpp"
 
 #define SIZE 35
@@ -42,7 +43,13 @@ private:
   sf::Sprite _fruit2;
   sf::Sprite _fruit3;
   sf::Sprite _fruit4;
+  sf::Sprite _fruit5;
+  sf::Sprite _fruit6;
+  sf::Sprite _fruit7;
+  sf::Sprite _fruit8;
   sf::Sprite _portal;
+  sf::Sprite _swimm;
+  sf::Music _music;
 };
 
 #endif

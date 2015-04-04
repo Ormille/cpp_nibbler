@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Fri Apr  3 19:48:45 2015 le-gue_n
+## Last update Sat Apr  4 19:03:36 2015 terran_j
 ##
 
 NAME_EXE =	nibbler
@@ -35,7 +35,7 @@ OBJ_LIB3 =	$(SRC_LIB3:.cpp=.o)
 CXX  =		g++
 CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./nCurses/include -std=gnu++11 -g
 
-LDFLAGS =	-ldl -rdynamic -lGL -lGLU -lSDL -lsfml-graphics -lsfml-window -lsfml-system -lncurses
+LDFLAGS =	-ldl -rdynamic -lGL -lGLU -lSDL -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system -lncurses
 
 make:	all
 
@@ -43,7 +43,7 @@ $(NAME_EXE):$(OBJ_EXE)
 	$(CXX) $(LDFLAGS) -o $(NAME_EXE) $(OBJ_EXE) $(LDFLAGS)
 
 $(NAME_LIB1):$(OBJ_LIB1)
-	$(CXX) -shared -o $(NAME_LIB1) $(OBJ_LIB1) -lsfml-graphics -lsfml-window -lsfml-system
+	$(CXX) -shared -o $(NAME_LIB1) $(OBJ_LIB1) -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
 
 $(NAME_LIB2):$(OBJ_LIB2)
 	$(CXX) -shared -o $(NAME_LIB2) $(OBJ_LIB2) -lGL -lGLU -lSDL
