@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 22:23:18 2015 moran-_d
+// Last update Sat Apr  4 22:39:50 2015 moran-_d
 //
 
 #include <sstream>
@@ -124,7 +124,7 @@ bool Nibbler::eventPopSnake()
   bool t = this->paused;
 
   st << "A savage snake has appeared ! ID=" << (this->snakeCount + 1);
-  this->lib->affText(st.str().c_str());
+  this->lib->affText(st.str());
   this->paused = false;
   this->popNewSnake();
   this->paused = t;
@@ -198,7 +198,7 @@ void Nibbler::remove_snake(std::list<Snake*>::iterator it)
 
   st << "Serpent N°" << (*it)->getId() << " is dead." << std::endl
      << "\t Score : " << (*it)->getScore() + (*it)->getTurn();
-  this->lib->affText(st.str().c_str());
+  this->lib->affText(st.str());
   this->snakes.erase(it);
 }
 
