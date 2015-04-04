@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Sat Apr  4 22:35:38 2015 terran_j
+// Last update Sat Apr  4 23:02:30 2015 terran_j
 //
 
 #include <iostream>
@@ -22,7 +22,7 @@ SFML::~SFML()
 int	SFML::initLib(unsigned int x, unsigned int y)
 {
   sf::RenderWindow *n;
-  sf::Font font;
+  sf::Font *font = new sf::Font();
 
   if (x * SIZE > 1800 || y * SIZE > 1000)
     {
@@ -111,9 +111,9 @@ int	SFML::initLib(unsigned int x, unsigned int y)
   sf::Sprite portal(*texture15);
   this->_portal = portal;
 
-  if (!font.loadFromFile("SFML/textures/arial.ttf"))
+  if (!font->loadFromFile("SFML/textures/arial.ttf"))
     return (-1);
-  this->_txt.setFont(font);
+  this->_txt.setFont(*font);
 
   return (0);
 }
@@ -143,7 +143,7 @@ void	SFML::refreshImg(int **map)
   int y;
 
   this->_window->clear(sf::Color::Black);
-
+  ++this->_span;
   while (x < this->_x + 2)
     {
       y = 0;
@@ -155,6 +155,8 @@ void	SFML::refreshImg(int **map)
 	}
       x++;
     }
+  if (this->_span < 75)
+    this->_window->draw(this->_txt);
   this->_window->display();
 }
 
@@ -300,13 +302,21 @@ void	SFML::affText(const std::string &toAff)
   this->_txt.setString(toAff);
   this->_txt.setCharacterSize(24);
   this->_txt.setColor(sf::Color::White);
-  this->_window->draw(this->_txt);
-  // this->_window->display();
+  this->_txt.setPosition(this->_x * SIZE / 3, this->_y * SIZE / 4);
+  this->_span = 0;
 }
 
 void    SFML::closeLib()
 {
   this->_music.stop();
+
+  this->_txt.setString("Game Over");
+  this->_txt.setCharacterSize(54);
+  this->_txt.setColor(sf::Color::White);
+  this->_txt.setPosition(this->_x * SIZE / 3, this->_y * SIZE / 2);
+  this->_window->draw(this->_txt);
+  this->_window->display();
+  sleep(1);
   this->_window->close();
 }
 
