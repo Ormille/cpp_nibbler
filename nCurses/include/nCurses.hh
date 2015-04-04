@@ -22,7 +22,7 @@ public:
 
   int	initLib(unsigned int x, unsigned int y);
   int	getEvent();
-  void	getTheChar(int nb);
+  int	notWall(int nb);
   void	putSnake(int nb);
   void	putItems(int nb);
   void	refreshImg(int **map);
