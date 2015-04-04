@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Sat Apr  4 19:51:27 2015 moran-_d
+// Last update Sat Apr  4 21:15:10 2015 moran-_d
 //
 
 #include <iostream>
@@ -150,7 +150,6 @@ int Snake::advance()
   ++this->turn;
   if ((content = this->getNextCell(objective, this->direction)) > 0)
     {
-      std::cout << "FOUND OBSTACLE AHEAD OF SNAKE, VALUE = " << content << std::endl;
       return (this->harakiri());
     }
   this->reduce_tail();
@@ -192,6 +191,12 @@ double Snake::getSpeedModifier() const
 
 void Snake::setSpeedModifier(double s)
 { this->speed_modifier = s; }
+
+int Snake::getScore() const
+{ return (this->score); }
+
+void Snake::setScore(int s)
+{ this->score = s; }
 
 void Snake::setMoved(bool b)
 { this->moved = b; }
