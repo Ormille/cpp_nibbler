@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 18:38:03 2015 moran-_d
+// Last update Sat Apr  4 18:55:25 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -58,6 +58,8 @@ int Nibbler::process()
       if (this->paused == false)
 	this->process_items();
       this->lib->refreshImg(this->map->getMap());
+      if (this->snakes.empty())
+	loop = false;
     }
   lib->closeLib();
   return (0);
