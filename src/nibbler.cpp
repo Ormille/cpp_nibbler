@@ -42,7 +42,7 @@ int Nibbler::process()
   if (this->popSnake(this->map->getX() / 2, this->map->getY() / 2, 0xFF00FF) < 0)
     return (-1);
   this->buildItems();
-  this->map->printMap();
+  //this->map->printMap();
   this->ticked = std::chrono::system_clock::now();
   while (loop)
     {
@@ -200,7 +200,7 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
 			    (SNAKE_WAIT * (*it)->getSpeedModifier()));
 	  if (this->paused == false && (*it)->advance() == -1)
 	    this->snakes.erase(it);
-	  this->map->printMap();
+	  //this->map->printMap();
 	}
       it = next;
     }
