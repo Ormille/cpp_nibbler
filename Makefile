@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Sat Apr  4 19:03:36 2015 terran_j
+## Last update Sat Apr  4 19:07:08 2015 terran_j
 ##
 
 NAME_EXE =	nibbler
@@ -15,7 +15,10 @@ SRC_EXE =	src/main.cpp \
 		src/Snake.cpp \
 		src/Map.cpp \
 		src/BigFruit.cpp \
-		src/Fruit.cpp
+		src/SpeedFruit.cpp \
+		src/SlowFruit.cpp \
+		src/Fruit.cpp \
+		src/Portal.cpp
 OBJ_EXE =	$(SRC_EXE:.cpp=.o)
 
 NAME_LIB1 =	lib_nibbler_sfml.so

@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Fri Apr  3 18:17:51 2015 moran-_d
+// Last update Sat Apr  4 18:55:25 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -14,6 +14,9 @@
 #include <iostream>
 #include "nibbler.hh"
 #include "BigFruit.hh"
+#include "SpeedFruit.hh"
+#include "SlowFruit.hh"
+#include "Portal.hh"
 
 Nibbler::Nibbler(unsigned int x, unsigned int y, IObjGraph *lib)
 {
@@ -52,8 +55,11 @@ int Nibbler::process()
 	  loop = this->applyEvent(key);
 	}
       this->process_snake(this->ticked);
-      this->process_items();
+      if (this->paused == false)
+	this->process_items();
       this->lib->refreshImg(this->map->getMap());
+      if (this->snakes.empty())
+	loop = false;
     }
   lib->closeLib();
   return (0);
@@ -73,9 +79,14 @@ void Nibbler::process_items()
 
 void Nibbler::buildItems()
 {
+  this->map->fillRandomEmptySquareWith(10);
   (*(this->items))[-1] = new Fruit();
   (*(this->items))[-1]->pop(this->map);
   (*(this->items))[-2] = new BigFruit();
+  (*(this->items))[-4] = new SpeedFruit();
+  (*(this->items))[-5] = new SlowFruit();
+  (*(this->items))[-100] = new Portal();
+  (*(this->items))[-100]->pop(this->map);
 }
 
 /*

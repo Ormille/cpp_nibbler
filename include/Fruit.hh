@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:27:29 2015 moran-_d
-// Last update Fri Apr  3 17:56:32 2015 moran-_d
+// Last update Sat Apr  4 17:14:25 2015 moran-_d
 //
 
 #ifndef FRUIT_H_
@@ -24,7 +24,7 @@ public:
 public:
   virtual int pop(Map *);
   virtual void turn(Map *);
-  virtual void use(Map *, Snake *);
+  virtual void use(Map *, Snake *, unsigned int *);
 };
 
 #endif

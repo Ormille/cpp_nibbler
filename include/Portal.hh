@@ -1,0 +1,32 @@
+//
+// Portal.hh for portal in /home/moran-_d/rendu/cpp_nibbler/include
+// 
+// Made by moran-_d
+// Login   <moran-_d@epitech.net>
+// 
+// Started on  Sat Apr  4 16:57:16 2015 moran-_d
+// Last update Sat Apr  4 17:53:08 2015 moran-_d
+//
+
+#ifndef PORTAL_H_
+#define PORTAL_H_
+
+#include "Item.hh"
+
+class Portal : public Item {
+private:
+  unsigned int pos1[2];
+  unsigned int pos2[2];
+
+public:
+  Portal();
+  ~Portal();
+
+public:
+  virtual int pop(Map *);
+  virtual void turn(Map *);
+  virtual void _use(Map *, Snake *, unsigned int *);
+  virtual void use(Map *, Snake *, unsigned int *);
+};
+
+#endif

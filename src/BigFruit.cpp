@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 17:51:01 2015 moran-_d
-// Last update Fri Apr  3 18:15:29 2015 moran-_d
+// Last update Sat Apr  4 18:29:31 2015 moran-_d
 //
 
 #include "BigFruit.hh"
@@ -26,8 +26,9 @@ void BigFruit::turn(Map *map)
       this->pop(map);
 }
 
-void BigFruit::use(Map *map, Snake *snake)
+void BigFruit::use(Map *map, Snake *snake, unsigned int *obj)
 {
+  obj = obj;
   snake->enlarge((random() % 5) + 1);
   this->exist = false;
   map->setCell(this->pos[0], this->pos[1], 0);

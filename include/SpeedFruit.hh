@@ -1,22 +1,22 @@
 //
-// BigFruit.hh for Bigfruit in /home/moran-_d/rendu/cpp_nibbler
+// SpeedFruit.hh for SpeedFruit in /home/moran-_d/rendu/cpp_nibbler
 // 
 // Made by moran-_d
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 17:49:27 2015 moran-_d
-// Last update Sat Apr  4 17:14:56 2015 moran-_d
+// Last update Sat Apr  4 17:15:03 2015 moran-_d
 //
 
-#ifndef BIGFRUIT_H_
-#define BIGFRUIT_H_
+#ifndef SPEEDFRUIT_H_
+#define SPEEDFRUIT_H_
 
 #include "Fruit.hh"
 
-class BigFruit : public Fruit {
+class SpeedFruit : public Fruit {
 public:
-  BigFruit();
-  ~BigFruit();
+  SpeedFruit();
+  ~SpeedFruit();
 
 public:
   void turn(Map *);

@@ -91,24 +91,24 @@ void	Cube::drawOther(int x, int y, int nb)
 void	Cube::drawMapItems(int **map)
 {
   std::tuple<int, int, int> rgb;
-  int	y = 0;
+  int	x = 0;
 
   rgb = std::make_tuple(41, 41, 41);
-  while (y < this->mapW + 2)
+  while (x < this->mapH + 2)
     {
-      int	x = 0;
-      while (x < this->mapH + 2)
+      int	y = 0;
+      while (y < this->mapW + 2)
         {
           if (map[y][x] < 0)
-            this->drawOther(y, x, map[y][x]);
+            this->drawOther(x, y, map[y][x]);
           else
             if (map[y][x] > 3)
-              this->drawCube(y, x, rgb);
+              this->drawCube(x, y, rgb);
             else
               if (map[y][x] > 0)
-                this->drawSnake(y, x, map[y][x]);
-          x++;
+                this->drawSnake(x, y, map[y][x]);
+          y++;
         }
-      y++;
+      x++;
     }
 }
