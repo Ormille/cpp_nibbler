@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 10:04:04 2015 moran-_d
-// Last update Thu Mar 26 11:24:45 2015 moran-_d
+// Last update Sat Apr  4 19:58:02 2015 moran-_d
 //
 
 #ifndef DLLOADER_H_
@@ -21,15 +21,20 @@ class DLLoader {
 private:
   void *_DL;
 
+private:
+  DLLoader &operator=(DLLoader const &);
+  DLLoader(const DLLoader &);
+  DLLoader(const DLLoader &&);
+
 public:
   DLLoader();
   ~DLLoader();
 
   int LoadDL(const char *);
-  void *ExtractFunction(const char *);
+  void *ExtractFunction(const char *) const;
   int CloseDL();
 
-  IObjGraph *getIOGInstance();
+  IObjGraph *getIOGInstance() const;
 };
 
 #endif

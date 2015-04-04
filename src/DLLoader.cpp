@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 10:21:22 2015 moran-_d
-// Last update Thu Mar 26 11:15:59 2015 moran-_d
+// Last update Sat Apr  4 19:48:34 2015 moran-_d
 //
 
 #include <iostream>
@@ -35,7 +35,7 @@ int DLLoader::LoadDL(const char *st)
   return (0);
 }
 
-void *DLLoader::ExtractFunction(const char *st)
+void *DLLoader::ExtractFunction(const char *st) const
 {
   void *handler;
 
@@ -63,7 +63,7 @@ int DLLoader::CloseDL()
   return (ret);
 }
 
-IObjGraph *DLLoader::getIOGInstance()
+IObjGraph *DLLoader::getIOGInstance() const
 {
   void *(*fptr)();
 

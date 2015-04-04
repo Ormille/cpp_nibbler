@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:23:49 2015 moran-_d
-// Last update Sat Apr  4 17:14:39 2015 moran-_d
+// Last update Sat Apr  4 19:57:05 2015 moran-_d
 //
 
 #ifndef ITEM_H_
@@ -21,9 +21,13 @@ protected:
   int span;
 
 protected:
-  Item();
   Item(int id, bool exist, int span) : id(id), exist(exist), span(span) {};
   virtual ~Item() {};
+
+private:
+  Item &operator=(Item const &);
+  Item(const Item &);
+  Item(const Item &&);
 
 public:
   virtual int pop(Map *) = 0;

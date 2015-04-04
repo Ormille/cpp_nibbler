@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:27:29 2015 moran-_d
-// Last update Sat Apr  4 17:14:25 2015 moran-_d
+// Last update Sat Apr  4 19:58:29 2015 moran-_d
 //
 
 #ifndef FRUIT_H_
@@ -16,6 +16,11 @@
 class Fruit : public Item {
 protected:
   int pos[2];
+
+private:
+  Fruit &operator=(Fruit const &);
+  Fruit(const Fruit &);
+  Fruit(const Fruit &&);
 
 public:
   Fruit();

@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Sat Apr  4 19:06:38 2015 terran_j
+// Last update Sat Apr  4 19:51:27 2015 moran-_d
 //
 
 #include <iostream>
@@ -83,14 +83,14 @@ int Snake::tryDirKey(int key)
     return (-1);
   if (key == this->right_key)
     {
-      direction = (direction + 1) % 4;
+      this->direction = (this->direction + 1) % 4;
       this->moved = true;
       return (0);
     }
   else if (key == this->left_key)
     {
-      if ((direction = (direction - 1)) < 0)
-	direction = 3;
+      if ((this->direction = (this->direction - 1)) < 0)
+	this->direction = 3;
       this->moved = true;
       return (0);
     }
@@ -105,7 +105,6 @@ void Snake::_enlarge(int part)
   part = part;
   tmp[0] = (obj[0] = this->pos.back()[0]);
   tmp[1] = (obj[1] = this->pos.back()[1]);
-  std::cout << "HERE ENTRY WITH x = " << tmp[0] << " y = " << tmp[1] << std::endl;
   this->map->setCell(obj[0], obj[1], 2);
   if (this->getNextCell(obj, (this->direction + 1) % 4) == 0)
     {
@@ -148,6 +147,7 @@ int Snake::advance()
   unsigned int objective[2];
   int content;
 
+  ++this->turn;
   if ((content = this->getNextCell(objective, this->direction)) > 0)
     {
       std::cout << "FOUND OBSTACLE AHEAD OF SNAKE, VALUE = " << content << std::endl;
