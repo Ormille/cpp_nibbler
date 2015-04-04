@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:36:43 2015 Julie Terranova
-// Last update Sat Apr  4 18:08:45 2015 moran-_d
+// Last update Sat Apr  4 22:19:10 2015 moran-_d
 */
 
 #include <ctime>
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
   unsigned int x;
   unsigned int y;
 
-  if (argc < 4)
+  if (argc != 4)
     {
       std::cout << "Usage: nibbler MapX MapY GraphicLibrary" << std::endl;
       return (-1);
@@ -63,12 +63,12 @@ int	main(int argc, char **argv)
   srandom(time(NULL));
   if ((lib = load_lib(argv[3], dll)) == NULL)
     return (-1);
-  if ((x = strToInt(argv[1])) < 10 || x > 100)
+  if ((x = strToInt(argv[1])) < 20 || x > 100)
     {
       std::cout << "Invalid map width" << std::endl;
       return (0);
     }
-  if ((y = strToInt(argv[2])) < 10 || y > 100)
+  if ((y = strToInt(argv[2])) < 20 || y > 100)
     {
       std::cout << "Invalid map heigth" << std::endl;
       return (0);

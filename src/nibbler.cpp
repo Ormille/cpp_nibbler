@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 22:10:18 2015 moran-_d
+// Last update Sat Apr  4 22:23:18 2015 moran-_d
 //
 
 #include <sstream>
@@ -123,7 +123,7 @@ bool Nibbler::eventPopSnake()
   std::stringstream st;
   bool t = this->paused;
 
-  st << "A savage snake has appeared !" << (this->snakeCount);
+  st << "A savage snake has appeared ! ID=" << (this->snakeCount + 1);
   this->lib->affText(st.str().c_str());
   this->paused = false;
   this->popNewSnake();
