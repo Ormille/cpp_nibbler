@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:43:56 2015 moran-_d
-// Last update Sat Apr  4 18:37:39 2015 moran-_d
+// Last update Sat Apr  4 20:00:59 2015 moran-_d
 //
 
 #ifndef MAP_HH_
@@ -17,12 +17,17 @@ private:
   unsigned int y;
   int **map;
 
+private:
+  Map &operator=(Map const &);
+  Map(const Map &);
+  Map(const Map &&);
+
 public:
   Map(unsigned int x, unsigned int y);
   ~Map();
 
 public:
-  void printMap();
+  void printMap() const;
 
 public:
   int **getMap() const;

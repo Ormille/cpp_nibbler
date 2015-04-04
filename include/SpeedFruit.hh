@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 17:49:27 2015 moran-_d
-// Last update Sat Apr  4 17:15:03 2015 moran-_d
+// Last update Sat Apr  4 20:11:40 2015 moran-_d
 //
 
 #ifndef SPEEDFRUIT_H_
@@ -17,6 +17,11 @@ class SpeedFruit : public Fruit {
 public:
   SpeedFruit();
   ~SpeedFruit();
+
+private:
+  SpeedFruit &operator=(SpeedFruit const &);
+  SpeedFruit(const SpeedFruit &);
+  SpeedFruit(const SpeedFruit &&);
 
 public:
   void turn(Map *);

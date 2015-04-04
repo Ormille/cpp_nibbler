@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 17:49:27 2015 moran-_d
-// Last update Sat Apr  4 17:15:15 2015 moran-_d
+// Last update Sat Apr  4 20:10:25 2015 moran-_d
 //
 
 #ifndef SLOWFRUIT_H_
@@ -17,6 +17,11 @@ class SlowFruit : public Fruit {
 public:
   SlowFruit();
   ~SlowFruit();
+
+private:
+  SlowFruit &operator=(SlowFruit const &);
+  SlowFruit(const SlowFruit &);
+  SlowFruit(const SlowFruit &&);  
 
 public:
   void turn(Map *);

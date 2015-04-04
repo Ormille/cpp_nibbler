@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Thu Mar 26 15:05:37 2015 moran-_d
-// Last update Sat Apr  4 17:51:43 2015 moran-_d
+// Last update Sat Apr  4 20:11:03 2015 moran-_d
 //
 
 #ifndef SNAKE_H_
@@ -49,6 +49,11 @@ private:
 public:
   Snake(std::map<int, Item*> *items, Map *map, unsigned int x, unsigned int y, int color, int id);
   ~Snake();
+
+private:
+  Snake &operator=(Snake const &);
+  Snake(const Snake &);
+  Snake(const Snake &&);
 
 public:
   int _getNextCell(unsigned int *objective, int direction) const;

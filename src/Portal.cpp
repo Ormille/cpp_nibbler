@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Sat Apr  4 16:49:51 2015 moran-_d
-// Last update Sat Apr  4 18:31:53 2015 moran-_d
+// Last update Sat Apr  4 19:49:01 2015 moran-_d
 //
 
 #include <iostream>
@@ -37,7 +37,7 @@ void Portal::turn(Map *map)
   this->span += 1;
 }
 
-void Portal::_use(Map *map, Snake *snake, unsigned int *tmp)
+void Portal::_use(Map *map, Snake *snake, unsigned int *tmp) const
 {
   unsigned int obj[2] = {tmp[0], tmp[1]};
   int content;

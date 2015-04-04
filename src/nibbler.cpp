@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 18:55:25 2015 moran-_d
+// Last update Sat Apr  4 19:46:57 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -71,7 +71,7 @@ int Nibbler::process()
 ** *************************************************
 */
 
-void Nibbler::process_items()
+void Nibbler::process_items() const
 {
   for (auto it = this->items->begin(); it != this->items->end(); ++it)
     ((*it).second)->turn(this->map);
@@ -112,7 +112,7 @@ void Nibbler::buildEvents()
   this->events[32] = &Nibbler::eventPause;
 }
 
-bool Nibbler::eventQuit()
+bool Nibbler::eventQuit() const
 {
   return false;
 }

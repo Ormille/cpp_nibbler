@@ -5,7 +5,7 @@
 ** Login   <terran_j@epitech.net>
 **
 ** Started on  Mon Mar 23 18:37:22 2015 Julie Terranova
-// Last update Fri Apr  3 18:02:13 2015 moran-_d
+// Last update Sat Apr  4 20:01:33 2015 moran-_d
 */
 
 #ifndef NIBBLER_HH_
@@ -32,6 +32,11 @@ private:
   Map *map;
 
 private:
+  Nibbler &operator=(Nibbler const &);
+  Nibbler(const Nibbler &);
+  Nibbler(const Nibbler &&);
+
+private:
   std::chrono::system_clock::time_point ticked;
   bool paused;
   unsigned int snakeCount;
@@ -44,7 +49,7 @@ public:
   int process();
 
 private:
-  void process_items();
+  void process_items() const;
   void buildItems();
 
 public:
@@ -52,7 +57,7 @@ public:
 
 private:
   void buildEvents();
-  bool eventQuit();
+  bool eventQuit() const;
   bool eventPopSnake();
   bool eventPause();
 

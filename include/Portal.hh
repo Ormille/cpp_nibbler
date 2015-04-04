@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Sat Apr  4 16:57:16 2015 moran-_d
-// Last update Sat Apr  4 17:53:08 2015 moran-_d
+// Last update Sat Apr  4 20:02:34 2015 moran-_d
 //
 
 #ifndef PORTAL_H_
@@ -18,6 +18,11 @@ private:
   unsigned int pos1[2];
   unsigned int pos2[2];
 
+private:
+  Portal &operator=(Portal const &);
+  Portal(const Portal &);
+  Portal(const Portal &&);
+
 public:
   Portal();
   ~Portal();
@@ -25,7 +30,7 @@ public:
 public:
   virtual int pop(Map *);
   virtual void turn(Map *);
-  virtual void _use(Map *, Snake *, unsigned int *);
+  virtual void _use(Map *, Snake *, unsigned int *) const;
   virtual void use(Map *, Snake *, unsigned int *);
 };
 

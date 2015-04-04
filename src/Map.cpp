@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Mon Mar 30 15:46:57 2015 moran-_d
-// Last update Sat Apr  4 18:47:17 2015 moran-_d
+// Last update Sat Apr  4 19:49:29 2015 moran-_d
 //
 
 #include <cstdlib>
@@ -42,7 +42,7 @@ Map::~Map()
   delete[] this->map;
 }
 
-void Map::printMap()
+void Map::printMap() const
 {
   unsigned int i;
   unsigned int t;
