@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 17:49:27 2015 moran-_d
-// Last update Sat Apr  4 15:52:37 2015 moran-_d
+// Last update Sat Apr  4 17:15:15 2015 moran-_d
 //
 
 #ifndef SLOWFRUIT_H_
@@ -20,7 +20,7 @@ public:
 
 public:
   void turn(Map *);
-  void use(Map *map, Snake *snake);
+  void use(Map *map, Snake *snake, unsigned int *);
 };
 
 #endif

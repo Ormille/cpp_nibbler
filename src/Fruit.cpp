@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 14:16:59 2015 moran-_d
-// Last update Fri Apr  3 17:59:39 2015 moran-_d
+// Last update Sat Apr  4 18:21:46 2015 moran-_d
 //
 
 #include "Fruit.hh"
@@ -34,12 +34,14 @@ int Fruit::pop(Map *map)
 
 void Fruit::turn(Map *map)
 {
-  map = map;
+  if (this->exist == false)
+    this->pop(map);
   this->span += 1;
 }
 
-void Fruit::use(Map *map, Snake *snake)
+void Fruit::use(Map *map, Snake *snake, unsigned int *obj)
 {
+  obj = obj;
   snake->enlarge(1);
   this->exist = false;
   map->setCell(this->pos[0], this->pos[1], 0);

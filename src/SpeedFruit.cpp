@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 // 
 // Started on  Fri Apr  3 17:51:01 2015 moran-_d
-// Last update Sat Apr  4 15:54:10 2015 moran-_d
+// Last update Sat Apr  4 18:29:37 2015 moran-_d
 //
 
 #include "SpeedFruit.hh"
@@ -26,8 +26,9 @@ void SpeedFruit::turn(Map *map)
       this->pop(map);
 }
 
-void SpeedFruit::use(Map *map, Snake *snake)
+void SpeedFruit::use(Map *map, Snake *snake, unsigned int *obj)
 {
+  obj = obj;
   snake->setSpeedModifier(snake->getSpeedModifier() * 1.2);
   this->exist = false;
   map->setCell(this->pos[0], this->pos[1], 0);

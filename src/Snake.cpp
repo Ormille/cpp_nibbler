@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Tue Mar 31 12:42:00 2015 moran-_d
-// Last update Sat Apr  4 15:49:00 2015 moran-_d
+// Last update Sat Apr  4 17:52:02 2015 moran-_d
 //
 
 #include <iostream>
@@ -47,10 +47,8 @@ Snake::~Snake()
     this->map->setCell((*it)[0], (*it)[1], 0);
 }
 
-int Snake::getNextCell(unsigned int *objective, int direction) const
+int Snake::_getNextCell(unsigned int *objective, int direction) const
 {
-  objective[0] = this->pos[0][0];
-  objective[1] = this->pos[0][1];
   if (direction == 0 || direction == 2)
     objective[0] += (!!direction) - (!direction);
   else if (direction == 1 || direction == 3)
@@ -58,7 +56,14 @@ int Snake::getNextCell(unsigned int *objective, int direction) const
       --direction;
       objective[1] += (!!direction) - (!direction);
     }
-  return (this->map->getCell(objective[0], objective[1]));
+  return (this->map->getCell(objective[0], objective[1]));  
+}
+
+int Snake::getNextCell(unsigned int *objective, int direction) const
+{
+  objective[0] = this->pos[0][0];
+  objective[1] = this->pos[0][1];
+  return (this->_getNextCell(objective, direction));
 }
 
 int Snake::harakiri()
@@ -149,15 +154,15 @@ int Snake::advance()
       return (this->harakiri());
     }
   this->reduce_tail();
+  this->map->setCell(this->pos.front()[0], this->pos.front()[1], 2);
   if (content < 0)
     {
-      (*(this->items))[content]->use(this->map, this);
+      (*(this->items))[content]->use(this->map, this, objective);
       if (this->alive == false)
 	return (this->harakiri());
     }
   if (this->moved == false)
     {
-      this->map->setCell(this->pos.front()[0], this->pos.front()[1], 2);
       this->map->setCell(objective[0], objective[1], 1);
       this->pos.push_front({objective[0], objective[1]});
     }
@@ -165,8 +170,10 @@ int Snake::advance()
   return (0);
 }
 
-void Snake::setSpeedModifier(double s)
-{ this->speed_modifier = s; }
+void Snake::pushPosFront(unsigned int x, unsigned int y)
+{
+  this->pos.push_front({x, y});
+}
 
 void Snake::setLeft(int k)
 { this->left_key = k; }
@@ -183,5 +190,23 @@ void Snake::setCounter(const std::chrono::milliseconds &d)
 double Snake::getSpeedModifier() const
 { return (this->speed_modifier); }
 
+void Snake::setSpeedModifier(double s)
+{ this->speed_modifier = s; }
+
 void Snake::setMoved(bool b)
 { this->moved = b; }
+
+bool Snake::getMoved() const
+{ return this->moved; }
+
+int Snake::getDirection() const
+{ return this->direction; }
+
+void Snake::setAlive(bool b)
+{ this->alive = b; }
+
+bool Snake::getAlive() const
+{ return this->alive; }
+
+std::map<int, Item*> *Snake::getItems() const
+{ return this->items; }
