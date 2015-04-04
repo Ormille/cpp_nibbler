@@ -12,6 +12,10 @@
 #include <stdio.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+
+#include <SDL/SDL_ttf.h>
+//#include <GL/glut.h>
+
 #include "opengl.hh"
 
 OpenGL::OpenGL()
@@ -27,14 +31,25 @@ OpenGL::~OpenGL()
 
 int    OpenGL::initLib(unsigned int x, unsigned int y)
 {
-  if (x > 100 || y > 100 || x < 20 || y < 20)
-    return (-1);
+  if (x > mapMax || y > mapMax || x < mapMin || y < mapMin)
+    {
+      std::cout << "Map minimum size : " << mapMin << " * " << mapMin << "; maximum size : " << mapMax << " * " << mapMax << std::endl;
+      return (-1);
+    }
   SDL_Surface	*screen;
 
-  SDL_Init(SDL_INIT_VIDEO);
-  atexit(SDL_Quit);
+  if (SDL_Init(SDL_INIT_VIDEO)  < 0/*|| TTF_Init() < 0*/)
+    {
+      std::cout << "Init did not worked." << std::endl;
+      return (-1);
+    }
+  //atexit(SDL_Quit);
   SDL_WM_SetCaption("Nibbler", NULL);
-  screen = SDL_SetVideoMode(winHeight, winWidth, 32, SDL_OPENGL);
+  if ((screen = SDL_SetVideoMode(winHeight, winWidth, 32, SDL_OPENGL)) == NULL)
+    {
+      std::cout << "Could not set video mode." << std::endl;
+      return (-1);
+    }
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluPerspective(70, (double)winHeight / winWidth, 1, 1000);
@@ -72,6 +87,18 @@ void    OpenGL::affText(const std::string &toAff)
 
 void	OpenGL::closeLib()
 {
+  /*std::string str("You lose!");
+  
+  glColor3ub(255, 255, 255);
+  glRasterPos2f(0, 0);
+  int i;
+  int len = str.length();
+  for (i = 0; i < len; i++) {
+    glutBitmapCharacter(GLUT_BITMAP_9_BY_15, str[i]); // ->undefined symbol GLUT_BITMAP_9_BY_15
+  }*/
+ 
+ // TTF_Quit();
+  
   SDL_Quit();
 }
 

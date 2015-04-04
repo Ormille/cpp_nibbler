@@ -8,6 +8,7 @@
 // Last update Fri Apr  3 15:54:27 2015 le-gue_n
 //
 
+#include <map>
 #include <GL/gl.h>
 #include "Cube.hh"
 
@@ -80,12 +81,27 @@ void	Cube::drawSnake(int x, int y, int nb)
 
 void	Cube::drawOther(int x, int y, int nb)
 {
-  std::tuple<int, int, int> rgb;
-  if (nb == -1)
+  //std::tuple<int, int, int> rgb;
+  std::map<int, std::tuple<int, int, int>> items;
+
+  items[-1] = std::make_tuple(223, 240, 115);
+  items[-2] = std::make_tuple(100, 18, 150);
+  items[-4] = std::make_tuple(191, 3, 0);
+  items[-5] = std::make_tuple(233, 240, 29);
+  items[-100] = std::make_tuple(50, 48, 82);
+  for (std::map<int, std::tuple<int, int, int>>::iterator it = items.begin(); it != items.end(); ++it)
+    {
+      if ((*it).first == nb)
+	{
+	  this->drawCube(x, y, (*it).second);
+	  return;
+	}
+    }
+ /* if (nb == -1)
     rgb = std::make_tuple(223, 240, 115);
   else
     rgb = std::make_tuple(50, 48, 82);
-  this->drawCube(x, y, rgb);
+  this->drawCube(x, y, rgb);*/
 }
 
 void	Cube::drawMapItems(int **map)
@@ -101,12 +117,10 @@ void	Cube::drawMapItems(int **map)
         {
           if (map[y][x] < 0)
             this->drawOther(x, y, map[y][x]);
-          else
-            if (map[y][x] > 3)
-              this->drawCube(x, y, rgb);
-            else
-              if (map[y][x] > 0)
-                this->drawSnake(x, y, map[y][x]);
+          else if (map[y][x] > 3)
+	    this->drawCube(x, y, rgb);
+	  else if (map[y][x] > 0)
+	    this->drawSnake(x, y, map[y][x]);
           y++;
         }
       x++;
