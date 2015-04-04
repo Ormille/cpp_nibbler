@@ -8,6 +8,8 @@
 // Last update Fri Apr  3 15:48:37 2015 terran_j
 //
 
+#include <unistd.h>
+
 #include <iostream>
 #include <stdio.h>
 #include "nCurses.hh"
@@ -23,24 +25,21 @@ int    nCurses::initLib(unsigned int x, unsigned int y)
   unsigned int xtmp = 0;
   unsigned int ytmp = 0;
 
-  std::cout << "1" << std::endl;
   initscr();
   getmaxyx(stdscr, xtmp, ytmp);
-  if (x > xtmp || y > ytmp)
+  if (x + 2 > xtmp || y + 2 > ytmp)
   {
     endwin();
     return (-1);
   }
   cbreak();
-  std::cout << "2" << std::endl;
   noecho();
   curs_set(FALSE);
-  std::cout << "3" << std::endl;
   this->_x = x;
   this->_y = y;
-  this->_win = newwin(x, y * 2, 0, 0);
-  wtimeout(this->_win, 1);
-  std::cout << "4" << std::endl;
+  this->_win = newwin(y + 2, x * 2 + 3, 0, 0);
+  keypad(this->_win, TRUE);
+  wtimeout(this->_win, 100);
   return (0);
 }
 
@@ -48,50 +47,75 @@ int     nCurses::getEvent()
 {
   int ch = -1;
 
-  if ((ch = wgetch(this->_win)) > 0)
-    return (ch);
-  return (ch);
+  //wrefresh(this->_win);
+  //wclear(this->_win);
+  ch = wgetch(this->_win);
+  //sleep(2);
+//   mvwprintw( this->_win, 5, 5, "%d", ch);
+  if (ch == KEY_LEFT)
+  {
+//     mvwprintw( this->_win, 0, 0, "trolololololo %d", ch);
+    return (275);
+  }
+  if (ch == KEY_RIGHT)
+    return (276);
+  return (-1);
 }
 
 void	nCurses::putItems(int x, int y, int nb)
 {
+  x = x;
+  y = y;
   if (nb == -1)
-    mvprintw(x, y, "&");
+    waddch(this->_win, '&');
   else
-    mvprintw(x, y, "x");
-    
+    waddch(this->_win, 'x');
+  waddch(this->_win, ' ');//x, y, '#', 1);
 }
 
 void	nCurses::putSnake(int x, int y, int nb)
 {
+  x =x;
+  y=y; // virer
   if (nb == 1)
-    mvprintw(x, y, "@");
-  else if (nb == 3)
-    mvprintw(x, y, "o");
+    waddch(this->_win, '@');
+  else if (nb == 2)
+    waddch(this->_win, 'O');
   else
-    mvprintw(x, y, "O");
+    waddch(this->_win, 'o');
+  waddch(this->_win, ' ');//x, y, '#', 1);
 }
 
 void    nCurses::refreshImg(int **map)
 {
-  //map = map; // a virer
-  int	x = 0;
-  int	y = 0;
+  map = map;
 
+  int	y = 0;
+  int	x;
   wclear(this->_win);
   while (y < this->_y + 2)
   {
     x = 0;
-    while (x < this->_x + 3)
+    while (x < this->_x + 2)
     {
-      if (map[y][x] < 0)
-	this->putItems(x, y, map[y][x]);
-      else if (map[y][x] <= 3)
-	this->putSnake(x, y, map[y][x]);
+      if (map[x][y] < 0)
+	this->putItems(x, y, map[x][y]);
+      else if (map[x][y] > 0 && map[x][y] <= 3)
+	this->putSnake(x, y, map[x][y]);
+      else if (map[x][y] == 2147483647)
+      {
+	waddch(this->_win, '#');//x, y, '#', 1);
+	if ((y == 0 || y == this->_y + 1) && (x != 0 && x != this->_x))
+	  waddch(this->_win, '#');//x, y, '#', 1);
+      }
       else
-	mvwvline(this->_win, x, y, '#', 1);
+      {
+	waddch(this->_win, ' ');//x, y, '#', 1);
+	waddch(this->_win, ' ');//x, y, '#', 1);
+      }
       x++;
     }
+	waddch(this->_win, '\n');//x, y, '#', 1);
    y++; 
   }
   wrefresh(this->_win);
@@ -104,6 +128,7 @@ void    nCurses::affText(const std::string &toAff)
 
 void    nCurses::closeLib()
 {
+  wclear(this->_win);
   endwin();
 }
 /*
