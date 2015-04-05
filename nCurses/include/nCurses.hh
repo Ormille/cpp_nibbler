@@ -35,6 +35,10 @@ private:
   int		_y;
   WINDOW	*_win;
   std::string	_toAff;
+  
+  nCurses(const nCurses &);
+  nCurses(const nCurses &&);
+  nCurses &operator=(const nCurses &);
 };
 
 #endif

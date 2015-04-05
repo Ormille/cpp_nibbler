@@ -33,11 +33,14 @@ public:
   void	closeLib();
 
 private:
-
   int		_mapX;
   int		_mapY;
   SDL_Surface	*_screen;
   GridInfos	*_grid;
+
+  OpenGL(const OpenGL &);
+  OpenGL(const OpenGL &&);
+  OpenGL &operator=(const OpenGL &);
 };
 
 #endif

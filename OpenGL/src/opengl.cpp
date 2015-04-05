@@ -12,10 +12,6 @@
 #include <stdio.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-
-#include <SDL/SDL_ttf.h>
-//#include <GL/glut.h>
-
 #include "opengl.hh"
 
 OpenGL::OpenGL()
@@ -43,7 +39,6 @@ int    OpenGL::initLib(unsigned int x, unsigned int y)
       std::cout << "Init did not worked." << std::endl;
       return (-1);
     }
-  //atexit(SDL_Quit);
   SDL_WM_SetCaption("Nibbler", NULL);
   if ((screen = SDL_SetVideoMode(winHeight, winWidth, 32, SDL_OPENGL)) == NULL)
     {
@@ -87,18 +82,6 @@ void    OpenGL::affText(const std::string &toAff)
 
 void	OpenGL::closeLib()
 {
-  /*std::string str("You lose!");
-  
-  glColor3ub(255, 255, 255);
-  glRasterPos2f(0, 0);
-  int i;
-  int len = str.length();
-  for (i = 0; i < len; i++) {
-    glutBitmapCharacter(GLUT_BITMAP_9_BY_15, str[i]); // ->undefined symbol GLUT_BITMAP_9_BY_15
-  }*/
- 
- // TTF_Quit();
-  
   SDL_Quit();
 }
 

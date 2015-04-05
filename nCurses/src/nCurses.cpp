@@ -9,8 +9,6 @@
 //
 
 #include <iostream>
-//#include <stdio.h>
-
 #include <curses.h>
 #include <map>
 #include "nCurses.hh"
@@ -39,7 +37,7 @@ int    nCurses::initLib(unsigned int x, unsigned int y)
   curs_set(FALSE);
   this->_x = x;
   this->_y = y;
-  this->_win = newwin(y * 2 + 2, x * 2 + 3, 0, 0);
+  this->_win = newwin(y + 3, x * 2 + 3, 0, 0);
   keypad(this->_win, TRUE);
   wtimeout(this->_win, 100);
   return (0);
@@ -82,10 +80,7 @@ void	nCurses::putItems(int nb)
       if ((*it).first == nb)
 	{
 	  waddch(this->_win, (*it).second);
-	//  if ((*it).first != 10)
-	    waddch(this->_win, ' ');
-	 /* else
-	    waddch(this->_win, '~');*/
+	  waddch(this->_win, ' ');
 	  return;
 	}
     }
@@ -135,10 +130,6 @@ void    nCurses::refreshImg(int **map)
       x = 0;
       while (x < this->_x + 2)
 	{
-	   /* if (map[x][y] < 0 || map[x][y] == 10)
-	      this->putItems(map[x][y]);
-	    else if (map[x][y] > 0 && map[x][y] <= 3)
-	      this->putSnake(map[x][y]);*/
 	   if (this->notWall(map[x][y]));
 	   else if (/*notWall(map[x][y]) == false && */map[x][y] == 2147483647)
 	    {

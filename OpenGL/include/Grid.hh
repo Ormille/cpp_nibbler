@@ -18,6 +18,10 @@ private:
   float	mapHeight;
   float	sizeL;
   float	grid;
+
+  GridInfos(const GridInfos &);
+  GridInfos(const GridInfos &&);
+  GridInfos &operator=(const GridInfos &);
 public:
   GridInfos(int mapW, int mapH);
   ~GridInfos();

@@ -22,6 +22,10 @@ private:
   float mapH;
   float sizeW;
   float sizeH;
+
+  Cube(const Cube &);
+  Cube(const Cube &&);
+  Cube &operator=(const Cube &);
 public:
   Cube(int mapW, int mapH);
   ~Cube();
