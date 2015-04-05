@@ -5,7 +5,7 @@
 // Login   <le-gue_n@epitech.net>
 //
 // Started on  Fri Apr  3 15:54:26 2015 le-gue_n
-// Last update Fri Apr  3 15:54:27 2015 le-gue_n
+// Last update Sun Apr  5 16:09:59 2015 terran_j
 //
 
 #include <map>
@@ -68,7 +68,7 @@ void	Cube::drawCube(int x, int y, std::tuple<int, int, int> rgb)
 void	Cube::drawSnake(int x, int y, int nb)
 {
   std::tuple<int, int, int> rgb;
-  
+
   if (nb == 1) // tete
     rgb = std::make_tuple(133, 75, 25);//(19, 138, 41);
   else
