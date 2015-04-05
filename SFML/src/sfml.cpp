@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:03 2015 Julie Terranova
-// Last update Sat Apr  4 23:02:30 2015 terran_j
+// Last update Sun Apr  5 15:06:58 2015 terran_j
 //
 
 #include <iostream>
@@ -24,13 +24,18 @@ int	SFML::initLib(unsigned int x, unsigned int y)
   sf::RenderWindow *n;
   sf::Font *font = new sf::Font();
 
-  if (x * SIZE > 1800 || y * SIZE > 1000)
+  if (x * 35 > 1800 || y * 35 > 1000)
+    this->_size = 15;
+  else
+    this->_size = 35;
+
+  if (x * this->_size > 1800 || y * this->_size > 1000)
     {
       std::cerr << "Too hight parameters, try again." << std::endl;
       return (-1);
     }
 
-  n = new sf::RenderWindow(sf::VideoMode((2 + x) * SIZE, (2 + y) * SIZE),
+  n = new sf::RenderWindow(sf::VideoMode((2 + x) * this->_size, (2 + y) * this->_size),
 			   "Nibbler SFML",
 			   sf::Style::Titlebar | sf::Style::Close);
 
@@ -126,7 +131,7 @@ int	SFML::getEvent()
     {
       if (Event.type == sf::Event::Closed)
 	return (27);
-      else if (Event.type == sf::Event::KeyPressed) // -42 si je change pas ca, faire map
+      else if (Event.type == sf::Event::KeyPressed)
 	{
 	  if (this->_mape.find(Event.key.code) != this->_mape.end())
 	    return this->_mape[Event.key.code];
@@ -187,113 +192,113 @@ void SFML::buildMaps()
 
 void SFML::fbords(int x, int y)
 {
-  this->_bords.setPosition(x * SIZE, y * SIZE);
+  this->_bords.setPosition(x * this->_size, y * this->_size);
   this->_bords.setScale(1.0f, 1.0f);
-  this->_bords.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_bords.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_bords);
 }
 
 void SFML::ftete(int x, int y)
 {
-  this->_tete.setPosition(x * SIZE, y * SIZE);
+  this->_tete.setPosition(x * this->_size, y * this->_size);
   this->_tete.setScale(1.0f, 1.0f);
-  this->_tete.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_tete.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_tete);
 }
 
 void SFML::fsnake(int x, int y)
 {
-  this->_snake.setPosition(x * SIZE, y * SIZE);
+  this->_snake.setPosition(x * this->_size, y * this->_size);
   this->_snake.setScale(1.0f, 1.0f);
-  this->_snake.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_snake.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_snake);
 }
 
 void SFML::fqueue(int x, int y)
 {
-  this->_queue.setPosition(x * SIZE, y * SIZE);
+  this->_queue.setPosition(x * this->_size, y * this->_size);
   this->_queue.setScale(1.0f, 1.0f);
-  this->_queue.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_queue.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_queue);
 }
 
 void SFML::fswimm(int x, int y)
 {
-  this->_swimm.setPosition(x * SIZE, y * SIZE);
+  this->_swimm.setPosition(x * this->_size, y * this->_size);
   this->_swimm.setScale(1.0f, 1.0f);
-  this->_swimm.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_swimm.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_swimm);
 }
 
 void SFML::fportal(int x, int y)
 {
-  this->_portal.setPosition(x * SIZE, y * SIZE);
+  this->_portal.setPosition(x * this->_size, y * this->_size);
   this->_portal.setScale(1.0f, 1.0f);
-  this->_portal.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_portal.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_portal);
 }
 
 void SFML::ffruit1(int x, int y)
 {
-  this->_fruit1.setPosition(x * SIZE, y * SIZE);
+  this->_fruit1.setPosition(x * this->_size, y * this->_size);
   this->_fruit1.setScale(1.0f, 1.0f);
-  this->_fruit1.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit1.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit1);
 }
 
 void SFML::ffruit2(int x, int y)
 {
-  this->_fruit2.setPosition(x * SIZE, y * SIZE);
+  this->_fruit2.setPosition(x * this->_size, y * this->_size);
   this->_fruit2.setScale(1.0f, 1.0f);
-  this->_fruit2.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit2.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit2);
 }
 
 void SFML::ffruit3(int x, int y)
 {
-  this->_fruit3.setPosition(x * SIZE, y * SIZE);
+  this->_fruit3.setPosition(x * this->_size, y * this->_size);
   this->_fruit3.setScale(1.0f, 1.0f);
-  this->_fruit3.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit3.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit3);
 }
 
 void SFML::ffruit4(int x, int y)
 {
-  this->_fruit4.setPosition(x * SIZE, y * SIZE);
+  this->_fruit4.setPosition(x * this->_size, y * this->_size);
   this->_fruit4.setScale(1.0f, 1.0f);
-  this->_fruit4.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit4.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit4);
 }
 
 void SFML::ffruit5(int x, int y)
 {
-  this->_fruit5.setPosition(x * SIZE, y * SIZE);
+  this->_fruit5.setPosition(x * this->_size, y * this->_size);
   this->_fruit5.setScale(1.0f, 1.0f);
-  this->_fruit5.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit5.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit5);
 }
 
 void SFML::ffruit6(int x, int y)
 {
-  this->_fruit6.setPosition(x * SIZE, y * SIZE);
+  this->_fruit6.setPosition(x * this->_size, y * this->_size);
   this->_fruit6.setScale(1.0f, 1.0f);
-  this->_fruit6.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit6.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit6);
 }
 
 void SFML::ffruit7(int x, int y)
 {
-  this->_fruit7.setPosition(x * SIZE, y * SIZE);
+  this->_fruit7.setPosition(x * this->_size, y * this->_size);
   this->_fruit7.setScale(1.0f, 1.0f);
-  this->_fruit7.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit7.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit7);
 }
 
 void SFML::ffruit8(int x, int y)
 {
-  this->_fruit8.setPosition(x * SIZE, y * SIZE);
+  this->_fruit8.setPosition(x * this->_size, y * this->_size);
   this->_fruit8.setScale(1.0f, 1.0f);
-  this->_fruit8.scale(1.0f * SIZE / 95, 1.0f * SIZE / 95);
+  this->_fruit8.scale(1.0f * this->_size / 95, 1.0f * this->_size / 95);
   this->_window->draw(this->_fruit8);
 }
 
@@ -302,7 +307,7 @@ void	SFML::affText(const std::string &toAff)
   this->_txt.setString(toAff);
   this->_txt.setCharacterSize(24);
   this->_txt.setColor(sf::Color::White);
-  this->_txt.setPosition(this->_x * SIZE / 3, this->_y * SIZE / 4);
+  this->_txt.setPosition(this->_x * this->_size / 3, this->_y * this->_size / 4);
   this->_span = 0;
 }
 
@@ -313,10 +318,10 @@ void    SFML::closeLib()
   this->_txt.setString("Game Over");
   this->_txt.setCharacterSize(54);
   this->_txt.setColor(sf::Color::White);
-  this->_txt.setPosition(this->_x * SIZE / 3, this->_y * SIZE / 2);
+  this->_txt.setPosition(this->_x * this->_size / 3, this->_y * this->_size / 2);
   this->_window->draw(this->_txt);
   this->_window->display();
-  sleep(1);
+  sleep(1.5);
   this->_window->close();
 }
 

@@ -5,7 +5,7 @@
 // Login   <terran_j@epitech.net>
 //
 // Started on  Tue Mar 24 17:01:57 2015 Julie Terranova
-// Last update Sat Apr  4 22:57:59 2015 terran_j
+// Last update Sun Apr  5 14:39:31 2015 terran_j
 //
 
 #ifndef SFML_HH__
@@ -17,8 +17,6 @@
 #include <SFML/Audio.hpp>
 #include <unistd.h>
 #include "IObjGraph.hpp"
-
-#define SIZE 35
 
 class SFML;
 
@@ -62,6 +60,7 @@ private:
   void ffruit8(int x, int y);
 
   sf::RenderWindow *_window;
+  int _size;
   int _x;
   int _y;
   sf::Sprite _bords;

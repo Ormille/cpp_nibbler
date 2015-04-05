@@ -5,7 +5,7 @@
 ## Login   <terran_j@epitech.net>
 ##
 ## Started on  Mon Mar 23 18:30:25 2015 Julie Terranova
-## Last update Sat Apr  4 21:19:06 2015 moran-_d
+## Last update Sun Apr  5 15:00:38 2015 terran_j
 ##
 
 NAME_EXE =	nibbler
@@ -37,7 +37,7 @@ SRC_LIB3 =	nCurses/src/nCurses.cpp
 OBJ_LIB3 =	$(SRC_LIB3:.cpp=.o)
 
 CXX  =		g++
-CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./nCurses/include -std=gnu++11 -g
+CXXFLAGS =	-Wall -Wextra -Werror -fPIC -I ./include -I ./SFML/include -I ./OpenGL/include -I ./nCurses/include -std=gnu++11
 
 LDFLAGS =	-ldl -rdynamic -lGL -lGLU -lSDL -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system -lncurses
 
