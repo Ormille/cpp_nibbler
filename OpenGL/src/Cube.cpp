@@ -67,16 +67,20 @@ void	Cube::drawCube(int x, int y, std::tuple<int, int, int> rgb)
 
 void	Cube::drawSnake(int x, int y, int nb)
 {
-  std::tuple<int, int, int> rgb;
   
-  if (nb == 1) // tete
-    rgb = std::make_tuple(133, 75, 25);//(19, 138, 41);
-  else
-    if (nb == 3) // queue
-      rgb = std::make_tuple(184, 159, 103);//(3, 59, 13);
-    else
-      rgb = std::make_tuple(82, 44, 11);//(13, 97, 28);
-  this->drawCube(x, y, rgb);
+  std::map<int, std::tuple<int, int, int>> items;
+
+  items[1] = std::make_tuple(133, 75, 25);
+  items[2] = std::make_tuple(82, 44, 11);
+  items[3] = std::make_tuple(184, 159, 103);
+  for (std::map<int, std::tuple<int, int, int>>::iterator it = items.begin(); it != items.end(); ++it)
+    {
+      if ((*it).first == nb)
+	{
+	  this->drawCube(x, y, (*it).second);
+	  return;
+	}
+    }
 }
 
 void	Cube::drawOther(int x, int y, int nb)
@@ -114,7 +118,7 @@ void	Cube::drawMapItems(int **map)
             this->drawOther(x, y, map[y][x]);
           else if (map[y][x] > 3)
 	    this->drawCube(x, y, rgb);
-	  else if (map[y][x] > 0)
+	  else
 	    this->drawSnake(x, y, map[y][x]);
           y++;
         }
