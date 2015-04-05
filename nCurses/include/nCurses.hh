@@ -11,6 +11,7 @@
 #ifndef NCURSES_HH__
 # define NCURSES_HH__
 
+#include <string>
 #include <ncurses.h>
 #include "IObjGraph.hpp"
 
@@ -33,6 +34,7 @@ private:
   int		_x;
   int		_y;
   WINDOW	*_win;
+  std::string	_toAff;
 };
 
 #endif

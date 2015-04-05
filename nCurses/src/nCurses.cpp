@@ -31,6 +31,7 @@ int    nCurses::initLib(unsigned int x, unsigned int y)
   if (x + 2 > xtmp || y + 2 > ytmp)
     {
       endwin();
+      std::cout << "Map size too big for windows size." << std::endl;
       return (-1);
     }
   cbreak();
@@ -38,7 +39,7 @@ int    nCurses::initLib(unsigned int x, unsigned int y)
   curs_set(FALSE);
   this->_x = x;
   this->_y = y;
-  this->_win = newwin(y + 2, x * 2 + 3, 0, 0);
+  this->_win = newwin(y * 2 + 2, x * 2 + 3, 0, 0);
   keypad(this->_win, TRUE);
   wtimeout(this->_win, 100);
   return (0);
@@ -73,6 +74,7 @@ void	nCurses::putItems(int nb)
   items[-2] = 'f';
   items[-4] = 'S';
   items[-5] = 's';
+  items[-6] = 'P';
   items[-100] = 'x';
   items[10] = '~';
   for (std::map<int, char>::iterator it = items.begin(); it != items.end(); ++it)
@@ -138,7 +140,7 @@ void    nCurses::refreshImg(int **map)
 	    else if (map[x][y] > 0 && map[x][y] <= 3)
 	      this->putSnake(map[x][y]);*/
 	   if (this->notWall(map[x][y]));
-	    else if (/*notWall(map[x][y]) == false && */map[x][y] == 2147483647)
+	   else if (/*notWall(map[x][y]) == false && */map[x][y] == 2147483647)
 	    {
 	      waddch(this->_win, '#');
 	      if ((y == 0 || y == this->_y + 1) && (x != 0 && x != this->_x))
@@ -154,19 +156,20 @@ void    nCurses::refreshImg(int **map)
       waddch(this->_win, '\n');
       y++; 
     }
+  wprintw(this->_win, this->_toAff.c_str());
   wrefresh(this->_win);
 }
 
 void    nCurses::affText(const std::string &toAff)
 {
-  std::cout << toAff << std::endl; // a virer
+  this->_toAff = toAff;
 }
 
 void    nCurses::closeLib()
 {
   wclear(this->_win);
   endwin();
-  std::cout << "You lose!" << std::endl;
+  std::cout << this->_toAff << std::endl;
 }
 
 extern "C"

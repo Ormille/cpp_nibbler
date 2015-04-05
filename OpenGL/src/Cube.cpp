@@ -88,6 +88,7 @@ void	Cube::drawOther(int x, int y, int nb)
   items[-2] = std::make_tuple(100, 18, 150);
   items[-4] = std::make_tuple(191, 3, 0);
   items[-5] = std::make_tuple(233, 240, 29);
+  items[-6] = std::make_tuple(0, 10, 156);
   items[-100] = std::make_tuple(50, 48, 82);
   for (std::map<int, std::tuple<int, int, int>>::iterator it = items.begin(); it != items.end(); ++it)
     {
