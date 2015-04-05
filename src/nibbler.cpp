@@ -5,7 +5,7 @@
 // Login   <moran-_d@epitech.net>
 //
 // Started on  Mon Mar 30 17:32:11 2015 moran-_d
-// Last update Sat Apr  4 23:01:57 2015 moran-_d
+// Last update Sun Apr  5 16:38:53 2015 moran-_d
 //
 
 #include <sstream>
@@ -219,7 +219,8 @@ void Nibbler::process_snake(std::chrono::system_clock::time_point &last)
 			   ) );
       if (counter > SNAKE_WAIT * (*it)->getSpeedModifier())
 	{
-	  (*it)->setMoved(false);
+	  if (this->paused == false)
+	    (*it)->setMoved(false);
 	  (*it)->setCounter(counter -
 			    std::chrono::duration_cast<std::chrono::milliseconds>
 			    (SNAKE_WAIT * (*it)->getSpeedModifier()));
